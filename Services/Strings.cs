@@ -18,9 +18,9 @@ namespace StarterBot.Services
             };
         }
 
-        public async Task<string> Get(string key, string language)
+        public async Task<string> GetString(string key, string language, params string[] tokens)
         {
-            return await Task.FromResult(_strings[key.ToLower()]);            
+            return await Task.FromResult(string.Format(_strings[key.ToLower()], tokens));            
         }
     }
 }
