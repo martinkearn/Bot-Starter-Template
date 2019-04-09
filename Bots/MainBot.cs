@@ -58,23 +58,19 @@ namespace StarterBot.Bots
         {
             var welcomeUserState = await _welcomeUserStateAccessor.GetAsync(turnContext, () => new WelcomeUserState());
 
+            // If the user has not yet been welcomed, welcome them and save the welcome state
             if (welcomeUserState.DidBotWelcomeUser == false)
             {
                 welcomeUserState.DidBotWelcomeUser = true;
-
-                // the channel should sends the user name in the 'From' object
                 var name = turnContext.Activity.From.Name ?? string.Empty;
-                //await turnContext.SendActivityAsync($"{await _strings.GetString("welcome", name)}", cancellationToken: cancellationToken);
                 await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.Welcome, name)}", cancellationToken: cancellationToken);
 
                 // Save any state changes.
                 await _userState.SaveChangesAsync(turnContext);
             }
-            else
-            {
-                await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
-            }
 
+            // Run the initial dialog
+            await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
         }
 
         // Greet when users are added to the conversation.
@@ -82,6 +78,7 @@ namespace StarterBot.Bots
         {
             var welcomeUserState = await _welcomeUserStateAccessor.GetAsync(turnContext, () => new WelcomeUserState());
 
+            // Welcome each member that was added
             foreach (var member in membersAdded)
             {
                 // The bot itself is a conversation member too ... this check makes sure this is not the bot joining
@@ -98,6 +95,9 @@ namespace StarterBot.Bots
                     }
                 }
             }
+
+            // Run the initial dialog
+            await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
         }
 
 
