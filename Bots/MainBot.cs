@@ -1,17 +1,17 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using StarterBot.Helpers;
-using StarterBot.Interfaces;
-using StarterBot.State;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
-using StarterBot.Resources;
+using StarterBot.Bots.Resources;
+using StarterBot.Helpers;
+using StarterBot.State;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace StarterBot.Bots
 {
@@ -65,14 +65,14 @@ namespace StarterBot.Bots
                 // the channel should sends the user name in the 'From' object
                 var name = turnContext.Activity.From.Name ?? string.Empty;
                 //await turnContext.SendActivityAsync($"{await _strings.GetString("welcome", name)}", cancellationToken: cancellationToken);
-                await turnContext.SendActivityAsync($"{SharedStrings.Welcome}", cancellationToken: cancellationToken);
+                await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.Welcome, name)}", cancellationToken: cancellationToken);
 
                 // Save any state changes.
                 await _userState.SaveChangesAsync(turnContext);
             }
             else
             {
-                await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>("DialogState"), cancellationToken, null);
+                await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
             }
 
         }
@@ -91,7 +91,7 @@ namespace StarterBot.Bots
                     if (turnContext.Activity.ChannelId.ToLower() != "webchat")
                     {
                         welcomeUserState.DidBotWelcomeUser = true;
-                        await turnContext.SendActivityAsync($"{SharedStrings.Welcome}", cancellationToken: cancellationToken);
+                        await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.WelcomeToTheConversation, member.Name)}", cancellationToken: cancellationToken);
 
                         // Save any state changes.
                         await _userState.SaveChangesAsync(turnContext);

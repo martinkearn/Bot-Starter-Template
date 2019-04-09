@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StarterBot.Resources {
+namespace StarterBot.Bots.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace StarterBot.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class SharedStrings {
+    internal class MainBotStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SharedStrings() {
+        internal MainBotStrings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace StarterBot.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StarterBot.Resources.SharedStrings", typeof(SharedStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StarterBot.Bots.Resources.MainBotStrings", typeof(MainBotStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,20 @@ namespace StarterBot.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I&apos;m sorry, that wasn&apos;t a valid response. Please select one of the options.
+        ///   Looks up a localized string similar to Welcome to the starter bot {0}.
         /// </summary>
-        internal static string InvalidResponseToChoicePrompt {
+        internal static string Welcome {
             get {
-                return ResourceManager.GetString("InvalidResponseToChoicePrompt", resourceCulture);
+                return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to the conversation {0}.
+        /// </summary>
+        internal static string WelcomeToTheConversation {
+            get {
+                return ResourceManager.GetString("WelcomeToTheConversation", resourceCulture);
             }
         }
     }

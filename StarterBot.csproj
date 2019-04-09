@@ -18,6 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Bots\Resources\MainBotStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MainBotStrings.resx</DependentUpon>
+    </Compile>
     <Compile Update="Dialogs\DialogA\Resources\DialogAStrings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -41,6 +46,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Bots\Resources\MainBotStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainBotStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Dialogs\DialogA\Resources\DialogAStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DialogAStrings.Designer.cs</LastGenOutput>
