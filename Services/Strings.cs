@@ -13,8 +13,10 @@ namespace StarterBot.Services
             {
                 { "welcome", "Welcome to the bot" },
                 { "whichflow", "Which conversation flow would you like to see?" },
-                { "rootdialogwelcome", "You are in root dialog" },
-                { "invalidresponse", "I'm sorry, that wasn't a valid response. Please select one of the options" }
+                { "rootdialogwelcome", "You are in Root dialog" },
+                { "invalidresponse", "I'm sorry, that wasn't a valid response. Please select one of the options" },
+                { "dialogawelcome", "You are in Dialog A" },
+                { "dialogbwelcome", "You are in Dialog B" },
             };
         }
 

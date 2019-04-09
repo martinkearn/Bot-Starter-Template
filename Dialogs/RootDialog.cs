@@ -20,8 +20,7 @@ namespace StarterBot.Dialogs
 
         private IStrings _strings;
 
-        public RootDialog(UserState userState, IConfiguration configuration, IStrings strings)
-            : base(nameof(RootDialog))
+        public RootDialog(UserState userState, IConfiguration configuration, IStrings strings) : base(nameof(RootDialog))
         {
             InitialDialogId = nameof(RootDialog);
             _strings = strings;
@@ -38,6 +37,8 @@ namespace StarterBot.Dialogs
             // Child dialogs
             AddDialog(new WaterfallDialog(InitialDialogId, waterfallSteps));
             AddDialog(new ChoicePrompt(ChoicePromptName));
+            AddDialog(new DialogA(userState, strings));
+            AddDialog(new DialogB(userState, strings));
         }
 
         private async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -66,22 +67,19 @@ namespace StarterBot.Dialogs
             switch (result)
             {
                 case ChoicePromptDialogA:
-                    await stepContext.Context.SendActivityAsync($"You want Dialog A", cancellationToken: cancellationToken);
-                    break;
+                    return await stepContext.BeginDialogAsync(nameof(DialogA));
                 case ChoicePromptDialogB:
-                    //return await stepContext.BeginDialogAsync(FINDFOODDIALOG, null, cancellationToken).ConfigureAwait(false);
-                    await stepContext.Context.SendActivityAsync($"You want Dialog B", cancellationToken: cancellationToken);
-                    break;
+                    return await stepContext.BeginDialogAsync(nameof(DialogB));
                 default:
-                    break;
+                    return await stepContext.NextAsync(cancellationToken: cancellationToken);
             }
-
-            return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
         private async Task<DialogTurnResult> EndAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            return await stepContext.EndDialogAsync();
+            //return await stepContext.EndDialogAsync();
+            // Restart the root dialog
+            return await stepContext.ReplaceDialogAsync(InitialDialogId).ConfigureAwait(false);
         }
     }
 }
