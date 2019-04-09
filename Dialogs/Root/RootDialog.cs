@@ -4,8 +4,10 @@ using Microsoft.Bot.Builder.Dialogs.Choices;
 using Microsoft.Extensions.Configuration;
 using StarterBot.Dialogs.DialogA;
 using StarterBot.Dialogs.DialogB;
+using StarterBot.Dialogs.Luis;
 using StarterBot.Dialogs.Root.Resources;
 using StarterBot.Interfaces;
+using StarterBot.Models;
 using StarterBot.Resources;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,7 @@ namespace StarterBot.Dialogs.Root
         private const string ChoicePromptName = "choiceprompt";
         private const string ChoicePromptDialogA = "Dialog A";
         private const string ChoicePromptDialogB = "Dialog B";
-        private IBotServices _botServices;
+        private readonly IBotServices _botServices;
 
         public RootDialog(IBotServices botServices, UserState userState) : base(nameof(RootDialog))
         {
@@ -30,6 +32,7 @@ namespace StarterBot.Dialogs.Root
             var waterfallSteps = new WaterfallStep[]
             {
                 SayHiAsync,
+                GetIntentAsync,
                 PromptForFlowAsync,
                 HandleFlowResultAsync,
                 EndAsync,
@@ -44,30 +47,29 @@ namespace StarterBot.Dialogs.Root
 
         private async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            await stepContext.Context.SendActivityAsync($"{RootStrings.Welcome}", cancellationToken: cancellationToken);
-
             // If required, get the utterance like this: 
             var utterance = (string)stepContext.Options;
 
-            #region Dispatch exmaple
-            //// This is a sample for calling Dispatch accross Luis and QNA via BotServices for getting top level intent and answering directly if QNA
+            await stepContext.Context.SendActivityAsync($"{RootStrings.Welcome}", cancellationToken: cancellationToken);
+
+            return await stepContext.NextAsync(cancellationToken: cancellationToken);
+        }
+
+        private async Task<DialogTurnResult> GetIntentAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        {
+            #region Dispatch example
+            //// You can delete this whole 'Dispatch example' region if you are not using Dispatch, Luis or QNA. (You should also delete Models/LuisModel.cs and Dialogs/Luis/LuisDialog.cs if you are not using Luis)
+            //// This is a sample for calling Dispatch accross Luis and QNA via BotServices for getting top level intent and answering directly if QNA.
             //var dispatchResults = await _botServices.Dispatch.RecognizeAsync(stepContext.Context, cancellationToken);
             //var dispatchTopScoringIntent = dispatchResults?.GetTopScoringIntent();
             //var dispatchTopIntent = dispatchTopScoringIntent.Value.intent;
             //switch (dispatchTopIntent)
             //{
             //    case "luismodelname":
-
-            //        // Look at generating a strongly typed LuisModel using LuisGen. Use it as follows:
-            //        //var luisResultModel = await _botServices.MainLuis.RecognizeAsync<LuisModel>(stepContext.Context, CancellationToken.None);
-
-            //        // Typically you can start a new dialog here to process the luis result you can pass the luisResultModel in as follows
-            //        // return await stepContext.BeginDialogAsync(nameof(LuisDialog), luisResultModel);
-
-            //        // You can read the luisResultModel in the LuisDialog as follows:
-            //        // _luisModel = (RecognizerResult)stepContext.Options;
-
-            //        break;
+            //        // Call the main luis model to get detailed intent and entity results. Dispatch will only provide top level model
+            //        var luisResultModel = await _botServices.MainLuis.RecognizeAsync<LuisModel>(stepContext.Context, CancellationToken.None);
+            //        // Start a new dialog here and can pass the luisResultModel in to process the luis result 
+            //        return await stepContext.BeginDialogAsync(nameof(LuisDialog), luisResultModel);
 
             //    case "qnamodelname":
             //        var results = await _botServices.MainQnA.GetAnswersAsync(stepContext.Context);
