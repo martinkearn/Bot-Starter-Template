@@ -1,14 +1,12 @@
-﻿using StarterBot.Bots;
-using StarterBot.Dialogs;
-using StarterBot.Interfaces;
-using StarterBot.Services;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.BotFramework;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.DependencyInjection;
+using StarterBot.Bots;
+using StarterBot.Dialogs.Root;
 
 namespace StarterBot
 {
@@ -17,8 +15,6 @@ namespace StarterBot
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
-
-            services.AddSingleton<IStrings, Strings>();
 
             services.AddSingleton<IBotFrameworkHttpAdapter, BotFrameworkHttpAdapter>();
 

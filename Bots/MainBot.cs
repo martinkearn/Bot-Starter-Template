@@ -11,6 +11,7 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
+using StarterBot.Resources;
 
 namespace StarterBot.Bots
 {
@@ -21,9 +22,8 @@ namespace StarterBot.Bots
         private readonly ILogger _logger;
         private readonly Dialog _dialog;
         private IStatePropertyAccessor<WelcomeUserState> _welcomeUserStateAccessor;
-        private IStrings _strings;
 
-        public MainBot(ConversationState conversationState, UserState userState, T dialog, ILogger<MainBot<T>> logger, IStrings strings)
+        public MainBot(ConversationState conversationState, UserState userState, T dialog, ILogger<MainBot<T>> logger)
         {
             if (conversationState == null)
             {
@@ -40,7 +40,6 @@ namespace StarterBot.Bots
             _logger = logger;
             _dialog = dialog;
             _welcomeUserStateAccessor = _userState.CreateProperty<WelcomeUserState>(nameof(WelcomeUserState));
-            _strings = strings;
 
             _logger.LogTrace("Turn start.");
         }
@@ -65,7 +64,8 @@ namespace StarterBot.Bots
 
                 // the channel should sends the user name in the 'From' object
                 var name = turnContext.Activity.From.Name ?? string.Empty;
-                await turnContext.SendActivityAsync($"{await _strings.GetString("welcome", name)}", cancellationToken: cancellationToken);
+                //await turnContext.SendActivityAsync($"{await _strings.GetString("welcome", name)}", cancellationToken: cancellationToken);
+                await turnContext.SendActivityAsync($"{SharedStrings.Welcome}", cancellationToken: cancellationToken);
 
                 // Save any state changes.
                 await _userState.SaveChangesAsync(turnContext);
@@ -91,7 +91,7 @@ namespace StarterBot.Bots
                     if (turnContext.Activity.ChannelId.ToLower() != "webchat")
                     {
                         welcomeUserState.DidBotWelcomeUser = true;
-                        await turnContext.SendActivityAsync($"{await _strings.GetString("welcome", null, member.Name)}", cancellationToken: cancellationToken);
+                        await turnContext.SendActivityAsync($"{SharedStrings.Welcome}", cancellationToken: cancellationToken);
 
                         // Save any state changes.
                         await _userState.SaveChangesAsync(turnContext);

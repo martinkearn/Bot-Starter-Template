@@ -16,4 +16,50 @@
     <PackageReference Include="Microsoft.Bot.Schema" Version="4.3.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="2.2.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Dialogs\DialogA\Resources\DialogAStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DialogAStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Dialogs\DialogB\Resources\DialogBStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DialogBStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Dialogs\Root\Resources\RootStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RootStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\SharedStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SharedStrings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Dialogs\DialogA\Resources\DialogAStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DialogAStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dialogs\DialogB\Resources\DialogBStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DialogBStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dialogs\Root\Resources\RootStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RootStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SharedStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
 </Project>

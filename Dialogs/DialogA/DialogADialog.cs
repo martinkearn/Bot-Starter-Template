@@ -1,19 +1,16 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
-using StarterBot.Interfaces;
+using StarterBot.Dialogs.DialogA.Resources;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace StarterBot.Dialogs
+namespace StarterBot.Dialogs.DialogA
 {
-    public class DialogA : ComponentDialog
+    public class DialogADialog : ComponentDialog
     {
-        private IStrings _strings;
-
-        public DialogA(UserState userState, IStrings strings) : base(nameof(DialogA))
+        public DialogADialog(UserState userState) : base(nameof(DialogADialog))
         {
-            InitialDialogId = nameof(DialogA);
-            _strings = strings;
+            InitialDialogId = nameof(DialogADialog);
 
             // Add child dialogs
             var waterfallSteps = new WaterfallStep[]
@@ -27,7 +24,7 @@ namespace StarterBot.Dialogs
 
         private async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            await stepContext.Context.SendActivityAsync($"{await _strings.GetString("dialogawelcome")}", cancellationToken: cancellationToken);
+            await stepContext.Context.SendActivityAsync($"{DialogAStrings.Welcome}", cancellationToken: cancellationToken);
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
