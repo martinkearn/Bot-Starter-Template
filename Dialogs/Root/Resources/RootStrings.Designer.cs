@@ -61,6 +61,24 @@ namespace StarterBot.Dialogs.Root.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dialog A.
+        /// </summary>
+        internal static string DialogAPrompt {
+            get {
+                return ResourceManager.GetString("DialogAPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dialog B.
+        /// </summary>
+        internal static string DialogBPrompt {
+            get {
+                return ResourceManager.GetString("DialogBPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I dont undertand the intent of your question, please re-phrase it.
         /// </summary>
         internal static string NoIntent {

@@ -1,16 +1,12 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
-using Microsoft.Extensions.Configuration;
 using StarterBot.Dialogs.DialogA;
 using StarterBot.Dialogs.DialogB;
-using StarterBot.Dialogs.Luis;
 using StarterBot.Dialogs.Root.Resources;
 using StarterBot.Interfaces;
-using StarterBot.Models;
 using StarterBot.Resources;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,8 +15,6 @@ namespace StarterBot.Dialogs.Root
     public class RootDialog : ComponentDialog
     {
         private const string ChoicePromptName = "choiceprompt";
-        private const string ChoicePromptDialogA = "Dialog A";
-        private const string ChoicePromptDialogB = "Dialog B";
         private readonly IBotServices _botServices;
 
         public RootDialog(IBotServices botServices, UserState userState) : base(nameof(RootDialog))
@@ -101,7 +95,7 @@ namespace StarterBot.Dialogs.Root
             return await stepContext.PromptAsync(ChoicePromptName,
                 new PromptOptions
                 {
-                    Choices = ChoiceFactory.ToChoices(new List<string> { ChoicePromptDialogA, ChoicePromptDialogB }),
+                    Choices = ChoiceFactory.ToChoices(new List<string> { RootStrings.DialogAPrompt, RootStrings.DialogBPrompt }),
                     Prompt = MessageFactory.Text(RootStrings.WhichFlowPrompt),
                     RetryPrompt = MessageFactory.Text(SharedStrings.InvalidResponseToChoicePrompt)
                 },
@@ -111,14 +105,19 @@ namespace StarterBot.Dialogs.Root
         private async Task<DialogTurnResult> HandleFlowResultAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var result = ((FoundChoice)stepContext.Result).Value;
-            switch (result)
+
+            // A switch statement would be better but that requires a constant so not a RESX value.
+            if (result == RootStrings.DialogAPrompt)
             {
-                case ChoicePromptDialogA:
-                    return await stepContext.BeginDialogAsync(nameof(DialogADialog));
-                case ChoicePromptDialogB:
-                    return await stepContext.BeginDialogAsync(nameof(DialogBDialog));
-                default:
-                    return await stepContext.NextAsync(cancellationToken: cancellationToken);
+                return await stepContext.BeginDialogAsync(nameof(DialogADialog));
+            }
+            else if (result == RootStrings.DialogBPrompt)
+            {
+                return await stepContext.BeginDialogAsync(nameof(DialogBDialog));
+            }
+            else
+            {
+                return await stepContext.NextAsync(cancellationToken: cancellationToken);
             }
         }
 
