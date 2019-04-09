@@ -61,6 +61,24 @@ namespace StarterBot.Dialogs.Root.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I dont undertand the intent of your question, please re-phrase it.
+        /// </summary>
+        internal static string NoIntent {
+            get {
+                return ResourceManager.GetString("NoIntent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was no answer ine th QNA knowledge base.
+        /// </summary>
+        internal static string NoQNAAnswer {
+            get {
+                return ResourceManager.GetString("NoQNAAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are in Root dialog.
         /// </summary>
         internal static string Welcome {
