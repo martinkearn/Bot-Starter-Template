@@ -1,7 +1,7 @@
 # Bot v4.3 Starter Template
 This is a .net template project which can be used as a starter for a v4.3 bot with the up-to-date patterns and practices.
 
-At this time, there is no Node equivalent (but that would make a great pull request).
+At this time, there is no NodeJS equivalent (but that would make a great pull request).
 
 The life of this project may be limited until such a time that there is an official v4.3 project template which adopts these patterns. Until such a template exists, you can use this project as a great starting point for a v4.3 .net Bot Framework project.
 
@@ -13,7 +13,8 @@ This sample includes the following:
 * Up-to-date patterns around `StartUp.cs`, `Program.cs`, `BotController.cs` and the main `ActivityHandler` architecture
 * Basic dialog system with a root dialog and multiple child dialogs
 * Welcome message with state
-* Strings interface
+* Strings using RESX files
+* A placeholder (commented out) example of using Dispatch, Luis and QNAMaker
 
 ## To use
 
