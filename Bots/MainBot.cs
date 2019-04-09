@@ -65,7 +65,7 @@ namespace StarterBot.Bots
 
                 // the channel should sends the user name in the 'From' object
                 var name = turnContext.Activity.From.Name ?? string.Empty;
-                await turnContext.SendActivityAsync($"Hi {name}! {await _strings.GetString("welcome", turnContext.Activity.Locale)}", cancellationToken: cancellationToken);
+                await turnContext.SendActivityAsync($"Hi {name}! {await _strings.Get("welcome", turnContext.Activity.Locale)}", cancellationToken: cancellationToken);
 
                 // Save any state changes.
                 await _userState.SaveChangesAsync(turnContext);
@@ -91,7 +91,7 @@ namespace StarterBot.Bots
                     if (turnContext.Activity.ChannelId.ToLower() != "webchat")
                     {
                         welcomeUserState.DidBotWelcomeUser = true;
-                        await turnContext.SendActivityAsync($"Hi {member.Name}! {await _strings.GetString("welcome", null)}", cancellationToken: cancellationToken);
+                        await turnContext.SendActivityAsync($"Hi {member.Name}! {await _strings.Get("welcome", null)}", cancellationToken: cancellationToken);
 
                         // Save any state changes.
                         await _userState.SaveChangesAsync(turnContext);
