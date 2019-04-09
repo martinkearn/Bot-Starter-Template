@@ -65,7 +65,7 @@ namespace StarterBot.Bots
 
                 // the channel should sends the user name in the 'From' object
                 var name = turnContext.Activity.From.Name ?? string.Empty;
-                await turnContext.SendActivityAsync($"{await _strings.GetString("welcome", turnContext.Activity.Locale, name)}", cancellationToken: cancellationToken);
+                await turnContext.SendActivityAsync($"{await _strings.GetString("welcome", name)}", cancellationToken: cancellationToken);
 
                 // Save any state changes.
                 await _userState.SaveChangesAsync(turnContext);

@@ -42,7 +42,7 @@ namespace StarterBot.Dialogs
 
         private async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            await stepContext.Context.SendActivityAsync($"{await _strings.GetString("rootdialogwelcome", null)}", cancellationToken: cancellationToken);
+            await stepContext.Context.SendActivityAsync($"{await _strings.GetString("rootdialogwelcome")}", cancellationToken: cancellationToken);
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
@@ -53,8 +53,8 @@ namespace StarterBot.Dialogs
                 new PromptOptions
                 {
                     Choices = ChoiceFactory.ToChoices(new List<string> { ChoicePromptDialogA, ChoicePromptDialogB }),
-                    Prompt = MessageFactory.Text(await _strings.GetString("whichflow", null)),
-                    RetryPrompt = MessageFactory.Text(await _strings.GetString("invalidresponse", null))
+                    Prompt = MessageFactory.Text(await _strings.GetString("whichflow")),
+                    RetryPrompt = MessageFactory.Text(await _strings.GetString("invalidresponse"))
 
                 },
                 cancellationToken).ConfigureAwait(false);

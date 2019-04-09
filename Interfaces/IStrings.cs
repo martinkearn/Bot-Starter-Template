@@ -7,6 +7,6 @@ namespace StarterBot.Interfaces
 {
     public interface IStrings
     {
-        Task<string> GetString(string key, string language, params string[] tokens);
+        Task<string> GetString(string key, params string[] tokens);
     }
 }
