@@ -1,4 +1,4 @@
-# Bot v4.3 .net Starter Template
+# Bot v4.3 Starter Template
 This is a .net template project which can be used as a starter for a v4.3 bot with the up-to-date patterns and practices.
 
 At this time, there is no Node equivalent (but that would make a great pull request).
