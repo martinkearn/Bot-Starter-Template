@@ -1,4 +1,7 @@
-﻿using Microsoft.Bot.Builder;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using StarterBot.Dialogs.CancelAndHelp;
 using StarterBot.Dialogs.NameAge.Resources;
