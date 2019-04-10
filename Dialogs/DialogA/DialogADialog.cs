@@ -26,6 +26,8 @@ namespace StarterBot.Dialogs.DialogA
                 HandleNameAsync,
                 AskAgeAsync,
                 HandleAgeAsync,
+                SaveStateAsync,
+                SummaryAsync,
                 EndAsync,
             };
             AddDialog(new WaterfallDialog(InitialDialogId, waterfallSteps));
@@ -44,7 +46,6 @@ namespace StarterBot.Dialogs.DialogA
 
         private async Task<DialogTurnResult> AskNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            // Get the state object from user state.
             var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
 
             //Check if user already provided country in DialogB and modify messages with provided info
@@ -74,17 +75,29 @@ namespace StarterBot.Dialogs.DialogA
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
-        private async Task<DialogTurnResult> EndAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        private async Task<DialogTurnResult> SaveStateAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             // Update state from stepContent
             var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
             state.Name = (string)stepContext.Values["name"];
             state.Age = (int)stepContext.Values["age"];
 
+            return await stepContext.NextAsync(cancellationToken: cancellationToken);
+        }
+
+        private async Task<DialogTurnResult> SummaryAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        {
+            var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
+
             //Check if user already provided country in DialogB and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Country)) ? $"Thank you {state.Name} for providing your age {state.Age}." : $"Thank you {state.Name}, {state.Age} from {state.Country} for providing your information.";
             await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
 
+            return await stepContext.NextAsync(cancellationToken: cancellationToken);
+        }
+
+        private async Task<DialogTurnResult> EndAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        {
             return await stepContext.EndDialogAsync();
         }
     }
