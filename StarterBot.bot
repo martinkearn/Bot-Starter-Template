@@ -1,15 +1,18 @@
-﻿{
-  "name": "StarterBot",
-  "services": [
-    {
-      "type": "endpoint",
-      "name": "development",
-      "endpoint": "http://localhost:3978/api/messages",
-      "appId": "",
-      "appPassword": "",
-      "id": "1"
-    }
-  ],
-  "padlock": "",
-  "version": "2.0"
+{
+    "name": "StarterBot",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:52033/api/messages",
+            "id": "1",
+            "name": "development"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "path": "C:\\Users\\ikivanc.MIDDLEEAST\\Documents\\GitHub\\Bot-v4.3-Template\\StarterBot.bot",
+    "overrides": null
 }
