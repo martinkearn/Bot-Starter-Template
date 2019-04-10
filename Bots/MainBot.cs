@@ -6,7 +6,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
 using StarterBot.Bots.Resources;
-using StarterBot.Helpers;
+using StarterBot.Extensions;
 using StarterBot.Models;
 using System;
 using System.Collections.Generic;

@@ -6,7 +6,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace StarterBot.Helpers
+namespace StarterBot.Extensions
 {
     public static class DialogExtensions
     {
