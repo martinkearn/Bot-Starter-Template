@@ -21,9 +21,9 @@ This sample includes the following:
 
 There are multiple ways you can use this project.
 
-### Install the Visual Studio template
+### Install the Visual Studio 2019 template
 
-There is a Visual Studio template based on the contents of the `src` folder in this repository.
+There is a Visual Studio 2019 template based on the contents of the `src` folder in this repository.
 
 You can download the VSIX [here](https://github.com/martinkearn/Bot-v4.3-Template/raw/master/vsix/StarterBot.vsix). After installation, create a project based on the template as follows (steps optimized for Visual Studio 2019):
 
@@ -32,6 +32,8 @@ You can download the VSIX [here](https://github.com/martinkearn/Bot-v4.3-Templat
 * Search for "starterbot"
 * Select `StarterBot v4.3`
 * Follow the usual new project steps
+
+This is only compatible with Visual Studio 2019. If you have Visual Studio 2017, see the 'Clone and rename' section
 
 This is probably the simplest way to use this template, but may not always be up-to-date with the very latest version of the project because the VSIX needs to be manually built and is not automated on every commit.
 
