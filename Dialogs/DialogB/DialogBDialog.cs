@@ -10,11 +10,11 @@ namespace StarterBot.Dialogs.DialogB
 {
     public class DialogBDialog : CancelAndHelpDialog
     {
-        private IStatePropertyAccessor<GlobalState> _globalStateAccessor;
+        private IStatePropertyAccessor<GlobalUserState> _globalUserStateAccessor;
 
         public DialogBDialog(UserState userState) : base(nameof(DialogBDialog))
         {
-            _globalStateAccessor = userState.CreateProperty<GlobalState>(nameof(GlobalState));
+            _globalUserStateAccessor = userState.CreateProperty<GlobalUserState>(nameof(GlobalUserState));
 
             InitialDialogId = nameof(DialogBDialog);
 
@@ -33,7 +33,7 @@ namespace StarterBot.Dialogs.DialogB
         private async Task<DialogTurnResult> SayHiAndAskCountryAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             // Get the current profile object from user state.
-            var state = await _globalStateAccessor.GetAsync(stepContext.Context, () => new GlobalState());
+            var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
 
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ? $"{DialogBStrings.Welcome}" : $"{DialogBStrings.Welcome}, {state.Name}";
@@ -48,7 +48,7 @@ namespace StarterBot.Dialogs.DialogB
             stepContext.Values["country"] = (string)stepContext.Result;
 
             // Get the current profile object from user state.
-            var state = await _globalStateAccessor.GetAsync(stepContext.Context, () => new GlobalState());
+            var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
             state.Country = (string)stepContext.Values["country"];
 
             //Check if user already provided Name and Age in DialogA and modify messages with provided info

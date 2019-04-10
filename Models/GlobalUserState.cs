@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace StarterBot.Models
 {
-    public class GlobalState
+    public class GlobalUserState
     {
         public bool DidBotWelcomeUser { get; set; } = false;
 

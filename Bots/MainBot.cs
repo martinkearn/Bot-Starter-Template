@@ -21,7 +21,7 @@ namespace StarterBot.Bots
         private readonly BotState _userState;
         private readonly ILogger _logger;
         private readonly Dialog _dialog;
-        private IStatePropertyAccessor<GlobalState> _globalStateAccessor;
+        private IStatePropertyAccessor<GlobalUserState> _globalStateAccessor;
 
         public MainBot(ConversationState conversationState, UserState userState, T dialog, ILogger<MainBot<T>> logger)
         {
@@ -39,7 +39,7 @@ namespace StarterBot.Bots
             _userState = userState;
             _logger = logger;
             _dialog = dialog;
-            _globalStateAccessor = _userState.CreateProperty<GlobalState>(nameof(GlobalState));
+            _globalStateAccessor = _userState.CreateProperty<GlobalUserState>(nameof(GlobalUserState));
 
             _logger.LogTrace("Turn start.");
         }
@@ -56,7 +56,7 @@ namespace StarterBot.Bots
         // Process incoming message
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
-            var state = await _globalStateAccessor.GetAsync(turnContext, () => new GlobalState());
+            var state = await _globalStateAccessor.GetAsync(turnContext, () => new GlobalUserState());
 
             // If the user has not yet been welcomed, welcome them and save the welcome state
             if (state.DidBotWelcomeUser == false)
@@ -76,7 +76,7 @@ namespace StarterBot.Bots
         // Greet when users are added to the conversation.
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
-            var state = await _globalStateAccessor.GetAsync(turnContext, () => new GlobalState());
+            var state = await _globalStateAccessor.GetAsync(turnContext, () => new GlobalUserState());
 
             // Welcome each member that was added
             foreach (var member in membersAdded)
