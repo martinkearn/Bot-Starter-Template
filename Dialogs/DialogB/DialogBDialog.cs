@@ -3,6 +3,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using StarterBot.Dialogs.CancelAndHelp;
 using StarterBot.Dialogs.DialogB.Resources;
 using StarterBot.Models;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -42,8 +43,8 @@ namespace StarterBot.Dialogs.DialogB
 
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ? 
-                $"{DialogBStrings.Welcome}" : 
-                $"{DialogBStrings.Welcome}, {state.Name}";
+                DialogBStrings.Welcome : 
+                String.Format(DialogBStrings.WelcomeWithName, state.Name);
             await stepContext.Context.SendActivityAsync(msg, cancellationToken: cancellationToken);
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
@@ -54,8 +55,8 @@ namespace StarterBot.Dialogs.DialogB
             var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
 
             var promptmsg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ? 
-                $"Where are you from?" : 
-                $"Where are you from {state.Name}?";
+                DialogBStrings.WhereFrom :
+                String.Format(DialogBStrings.WelcomeWithName, state.Name);
 
             return await stepContext.PromptAsync(CountryPromptName, new PromptOptions { Prompt = MessageFactory.Text(string.Format(promptmsg))}, cancellationToken);
         }
@@ -81,8 +82,8 @@ namespace StarterBot.Dialogs.DialogB
 
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ?
-                $"Thank you for your providing your country as {state.Country}" :
-                $"Thank you {state.Name}, {state.Age} from {state.Country} for providing your information.";
+                String.Format(DialogBStrings.ThankYouCountry, state.Country) :
+                String.Format(DialogBStrings.ThankYouCountry, state.Name, state.Age, state.Country);
 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
 

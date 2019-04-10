@@ -19,7 +19,7 @@ namespace StarterBot.Dialogs.DialogB.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class DialogBStrings {
@@ -61,11 +61,56 @@ namespace StarterBot.Dialogs.DialogB.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thank you for your providing your country as {0}.
+        /// </summary>
+        internal static string ThankYouCountry {
+            get {
+                return ResourceManager.GetString("ThankYouCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you {0}, {1} from {2} for providing your information..
+        /// </summary>
+        internal static string ThankYouNameAgeCountry {
+            get {
+                return ResourceManager.GetString("ThankYouNameAgeCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are in Dialog B.
         /// </summary>
         internal static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are in Dialog B, {0}.
+        /// </summary>
+        internal static string WelcomeWithName {
+            get {
+                return ResourceManager.GetString("WelcomeWithName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where are you from?.
+        /// </summary>
+        internal static string WhereFrom {
+            get {
+                return ResourceManager.GetString("WhereFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where are you from {0}?.
+        /// </summary>
+        internal static string WhereFromName {
+            get {
+                return ResourceManager.GetString("WhereFromName", resourceCulture);
             }
         }
     }
