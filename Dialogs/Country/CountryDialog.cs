@@ -22,8 +22,6 @@ namespace StarterBot.Dialogs.Country
         {
             _globalUserStateAccessor = userState.CreateProperty<GlobalUserState>(nameof(GlobalUserState));
 
-            InitialDialogId = nameof(CountryDialog);
-
             // Add waterfall dialog steps
             var waterfallSteps = new WaterfallStep[]
             {
@@ -34,10 +32,13 @@ namespace StarterBot.Dialogs.Country
                 SummaryAsync,
                 EndAsync,
             };
-            AddDialog(new WaterfallDialog(InitialDialogId, waterfallSteps));
 
-            // Add Prompts
+            // Child dialogs
+            AddDialog(new WaterfallDialog(nameof(WaterfallDialog), waterfallSteps));
             AddDialog(new TextPrompt(CountryPromptName));
+
+            // The initial child Dialog to run.
+            InitialDialogId = nameof(WaterfallDialog);
         }
 
         private async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -59,7 +60,7 @@ namespace StarterBot.Dialogs.Country
 
             var promptmsg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ?
                 CountryStrings.WhereFrom :
-                String.Format(CountryStrings.Welcome_Name, state.Name);
+                String.Format(CountryStrings.WhereFrom_Name, state.Name);
 
             return await stepContext.PromptAsync(CountryPromptName, new PromptOptions { Prompt = MessageFactory.Text(string.Format(promptmsg))}, cancellationToken);
         }

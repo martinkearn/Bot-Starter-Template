@@ -24,8 +24,6 @@ namespace StarterBot.Dialogs.NameAge
         {
             _globalUserStateAccessor = userState.CreateProperty<GlobalUserState>(nameof(GlobalUserState));
 
-            InitialDialogId = nameof(NameAgeDialog);
-
             // Add waterfall dialog steps
             var waterfallSteps = new WaterfallStep[]
             {
@@ -38,11 +36,14 @@ namespace StarterBot.Dialogs.NameAge
                 SummaryAsync,
                 EndAsync,
             };
-            AddDialog(new WaterfallDialog(InitialDialogId, waterfallSteps));
-            
-            // Add Prompts
+
+            // Child dialogs            
+            AddDialog(new WaterfallDialog(nameof(WaterfallDialog), waterfallSteps));
             AddDialog(new TextPrompt(NamePromptName));
             AddDialog(new NumberPrompt<int>(AgePromptName));
+
+            // The initial child Dialog to run.
+            InitialDialogId = nameof(WaterfallDialog);
         }
 
         private async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)

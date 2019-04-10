@@ -22,7 +22,6 @@ namespace StarterBot.Dialogs.Root
 
         public RootDialog(IBotServices botServices, UserState userState) : base(nameof(RootDialog))
         {
-            InitialDialogId = nameof(RootDialog);
             _botServices = botServices;
 
             // Define the steps of the waterfall dialog and add it to the set.
@@ -36,10 +35,13 @@ namespace StarterBot.Dialogs.Root
             };
 
             // Child dialogs
-            AddDialog(new WaterfallDialog(InitialDialogId, waterfallSteps));
+            AddDialog(new WaterfallDialog(nameof(WaterfallDialog), waterfallSteps));
             AddDialog(new ChoicePrompt(ChoicePromptName));
             AddDialog(new NameAgeDialog(userState));
             AddDialog(new CountryDialog(userState));
+
+            // The initial child Dialog to run.
+            InitialDialogId = nameof(WaterfallDialog);
         }
 
         private async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)

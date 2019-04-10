@@ -11,8 +11,7 @@ namespace StarterBot.Dialogs.CancelAndHelp
 {
     public class CancelAndHelpDialog : ComponentDialog
     {
-        public CancelAndHelpDialog(string id)
-            : base(id)
+        public CancelAndHelpDialog(string id) : base(id)
         {
         }
 

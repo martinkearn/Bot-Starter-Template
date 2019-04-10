@@ -15,16 +15,18 @@ namespace StarterBot.Dialogs.Luis
 
         public LuisDialog(UserState userState) : base(nameof(LuisDialog))
         {
-            InitialDialogId = nameof(LuisDialog);
-
-            // Add child dialogs
+            // Add waterfall dialog steps
             var waterfallSteps = new WaterfallStep[]
             {
                 GetModelAsync,
                 EndAsync,
             };
 
-            AddDialog(new WaterfallDialog(InitialDialogId, waterfallSteps));
+            // Child dialogs
+            AddDialog(new WaterfallDialog(nameof(WaterfallDialog), waterfallSteps));
+
+            // The initial child Dialog to run.
+            InitialDialogId = nameof(WaterfallDialog);
         }
 
         private async Task<DialogTurnResult> GetModelAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
