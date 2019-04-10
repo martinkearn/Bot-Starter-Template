@@ -64,7 +64,7 @@ namespace StarterBot.Bots
             {
                 state.DidBotWelcomeUser = true;
                 var name = turnContext.Activity.From.Name ?? string.Empty;
-                await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.Welcome, name)}", cancellationToken: cancellationToken);
+                await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.Welcome_name, name)}", cancellationToken: cancellationToken);
 
                 // Run the initial dialog
                 await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
@@ -91,7 +91,7 @@ namespace StarterBot.Bots
                     if (turnContext.Activity.ChannelId.ToLower() != WebChatChannelId)
                     {
                         state.DidBotWelcomeUser = true;
-                        await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.WelcomeToTheConversation, member.Name)}", cancellationToken: cancellationToken);
+                        await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.WelcomeToTheConversation_name, member.Name)}", cancellationToken: cancellationToken);
 
                         // Run the initial dialog
                         await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);

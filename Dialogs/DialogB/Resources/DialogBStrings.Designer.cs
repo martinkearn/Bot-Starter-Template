@@ -63,18 +63,18 @@ namespace StarterBot.Dialogs.DialogB.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Thank you for your providing your country as {0}.
         /// </summary>
-        internal static string ThankYouCountry {
+        internal static string ThankYou_Country {
             get {
-                return ResourceManager.GetString("ThankYouCountry", resourceCulture);
+                return ResourceManager.GetString("ThankYou_Country", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Thank you {0}, {1} from {2} for providing your information..
         /// </summary>
-        internal static string ThankYouNameAgeCountry {
+        internal static string ThankYou_NameAgeCountry {
             get {
-                return ResourceManager.GetString("ThankYouNameAgeCountry", resourceCulture);
+                return ResourceManager.GetString("ThankYou_NameAgeCountry", resourceCulture);
             }
         }
         
@@ -90,9 +90,9 @@ namespace StarterBot.Dialogs.DialogB.Resources {
         /// <summary>
         ///   Looks up a localized string similar to You are in Dialog B, {0}.
         /// </summary>
-        internal static string WelcomeWithName {
+        internal static string Welcome_Name {
             get {
-                return ResourceManager.GetString("WelcomeWithName", resourceCulture);
+                return ResourceManager.GetString("Welcome_Name", resourceCulture);
             }
         }
         
@@ -108,9 +108,9 @@ namespace StarterBot.Dialogs.DialogB.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Where are you from {0}?.
         /// </summary>
-        internal static string WhereFromName {
+        internal static string WhereFrom_Name {
             get {
-                return ResourceManager.GetString("WhereFromName", resourceCulture);
+                return ResourceManager.GetString("WhereFrom_Name", resourceCulture);
             }
         }
     }

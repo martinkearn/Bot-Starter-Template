@@ -63,18 +63,18 @@ namespace StarterBot.Dialogs.DialogA.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Thank you {0} for providing your age {1}.
         /// </summary>
-        internal static string ThankYouNameAge {
+        internal static string ThankYou_NameAge {
             get {
-                return ResourceManager.GetString("ThankYouNameAge", resourceCulture);
+                return ResourceManager.GetString("ThankYou_NameAge", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Thank you {0}, {1} from {2} for providing your information..
         /// </summary>
-        internal static string ThankYouNameAgeCountry {
+        internal static string ThankYou_NameAgeCountry {
             get {
-                return ResourceManager.GetString("ThankYouNameAgeCountry", resourceCulture);
+                return ResourceManager.GetString("ThankYou_NameAgeCountry", resourceCulture);
             }
         }
         
@@ -99,9 +99,9 @@ namespace StarterBot.Dialogs.DialogA.Resources {
         /// <summary>
         ///   Looks up a localized string similar to You already provided your country: {0}, what&apos;s your name?.
         /// </summary>
-        internal static string WhatsNameWithCountry {
+        internal static string WhatsName_Country {
             get {
-                return ResourceManager.GetString("WhatsNameWithCountry", resourceCulture);
+                return ResourceManager.GetString("WhatsName_Country", resourceCulture);
             }
         }
     }

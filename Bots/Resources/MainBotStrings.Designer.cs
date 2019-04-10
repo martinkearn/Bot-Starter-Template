@@ -63,18 +63,18 @@ namespace StarterBot.Bots.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Welcome to the starter bot {0}..
         /// </summary>
-        internal static string Welcome {
+        internal static string Welcome_name {
             get {
-                return ResourceManager.GetString("Welcome", resourceCulture);
+                return ResourceManager.GetString("Welcome_name", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Welcome to the conversation {0}..
         /// </summary>
-        internal static string WelcomeToTheConversation {
+        internal static string WelcomeToTheConversation_name {
             get {
-                return ResourceManager.GetString("WelcomeToTheConversation", resourceCulture);
+                return ResourceManager.GetString("WelcomeToTheConversation_name", resourceCulture);
             }
         }
     }

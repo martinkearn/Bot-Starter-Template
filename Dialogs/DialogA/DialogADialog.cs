@@ -56,7 +56,7 @@ namespace StarterBot.Dialogs.DialogA
             //Check if user already provided country in DialogB and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Country)) ? 
                 DialogAStrings.WhatsName :
-                String.Format(DialogAStrings.WhatsNameWithCountry, state.Country);
+                String.Format(DialogAStrings.WhatsName_Country, state.Country);
 
             return await stepContext.PromptAsync(NamePromptName, new PromptOptions { Prompt = MessageFactory.Text(msg) }, cancellationToken);
         }
@@ -96,8 +96,8 @@ namespace StarterBot.Dialogs.DialogA
 
             //Check if user already provided country in DialogB and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Country)) ?
-                String.Format(DialogAStrings.ThankYouNameAge, state.Name, state.Age) :
-                String.Format(DialogAStrings.ThankYouNameAgeCountry, state.Name, state.Age, state.Country);
+                String.Format(DialogAStrings.ThankYou_NameAge, state.Name, state.Age) :
+                String.Format(DialogAStrings.ThankYou_NameAgeCountry, state.Name, state.Age, state.Country);
 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
 

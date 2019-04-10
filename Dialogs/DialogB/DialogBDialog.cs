@@ -44,7 +44,7 @@ namespace StarterBot.Dialogs.DialogB
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ? 
                 DialogBStrings.Welcome : 
-                String.Format(DialogBStrings.WelcomeWithName, state.Name);
+                String.Format(DialogBStrings.Welcome_Name, state.Name);
             await stepContext.Context.SendActivityAsync(msg, cancellationToken: cancellationToken);
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
@@ -56,7 +56,7 @@ namespace StarterBot.Dialogs.DialogB
 
             var promptmsg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ? 
                 DialogBStrings.WhereFrom :
-                String.Format(DialogBStrings.WelcomeWithName, state.Name);
+                String.Format(DialogBStrings.Welcome_Name, state.Name);
 
             return await stepContext.PromptAsync(CountryPromptName, new PromptOptions { Prompt = MessageFactory.Text(string.Format(promptmsg))}, cancellationToken);
         }
@@ -82,8 +82,8 @@ namespace StarterBot.Dialogs.DialogB
 
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ?
-                String.Format(DialogBStrings.ThankYouCountry, state.Country) :
-                String.Format(DialogBStrings.ThankYouCountry, state.Name, state.Age, state.Country);
+                String.Format(DialogBStrings.ThankYou_Country, state.Country) :
+                String.Format(DialogBStrings.ThankYou_Country, state.Name, state.Age, state.Country);
 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
 
