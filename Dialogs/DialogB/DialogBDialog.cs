@@ -10,12 +10,11 @@ namespace StarterBot.Dialogs.DialogB
 {
     public class DialogBDialog : CancelAndHelpDialog
     {
-        private readonly IStatePropertyAccessor<UserProfile> _userProfileAccessor;
+        private IStatePropertyAccessor<GlobalState> _globalStateAccessor;
 
         public DialogBDialog(UserState userState) : base(nameof(DialogBDialog))
         {
-            // Define user userProfile State
-            _userProfileAccessor = userState.CreateProperty<UserProfile>("UserProfile");
+            _globalStateAccessor = userState.CreateProperty<GlobalState>(nameof(GlobalState));
 
             InitialDialogId = nameof(DialogBDialog);
 
@@ -34,13 +33,13 @@ namespace StarterBot.Dialogs.DialogB
         private async Task<DialogTurnResult> SayHiAndAskCountryAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             // Get the current profile object from user state.
-            var userProfile = await _userProfileAccessor.GetAsync(stepContext.Context, () => new UserProfile(), cancellationToken);
+            var state = await _globalStateAccessor.GetAsync(stepContext.Context, () => new GlobalState());
 
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
-            var msg = (string.IsNullOrEmpty(userProfile.Name) && userProfile.Age == 0) ? $"{DialogBStrings.Welcome}" : $"{DialogBStrings.Welcome}, {userProfile.Name}";
+            var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ? $"{DialogBStrings.Welcome}" : $"{DialogBStrings.Welcome}, {state.Name}";
             await stepContext.Context.SendActivityAsync(msg, cancellationToken: cancellationToken);
 
-            var promptmsg = (string.IsNullOrEmpty(userProfile.Name) && userProfile.Age == 0) ? $"Where are you from?" : $"Where are you from {userProfile.Name}?";
+            var promptmsg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ? $"Where are you from?" : $"Where are you from {state.Name}?";
             return await stepContext.PromptAsync("countryPrompt", new PromptOptions { Prompt = MessageFactory.Text(string.Format(promptmsg))}, cancellationToken);
         }
 
@@ -49,11 +48,11 @@ namespace StarterBot.Dialogs.DialogB
             stepContext.Values["country"] = (string)stepContext.Result;
 
             // Get the current profile object from user state.
-            var userProfile = await _userProfileAccessor.GetAsync(stepContext.Context, () => new UserProfile(), cancellationToken);
-            userProfile.Country = (string)stepContext.Values["country"];
+            var state = await _globalStateAccessor.GetAsync(stepContext.Context, () => new GlobalState());
+            state.Country = (string)stepContext.Values["country"];
 
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
-            var msg = (string.IsNullOrEmpty(userProfile.Name) && userProfile.Age == 0) ? $"Thank you for your providing your country as {userProfile.Country}" : $"Thank you {userProfile.Name}, {userProfile.Age} from {userProfile.Country} for providing your information.";
+            var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ? $"Thank you for your providing your country as {state.Country}" : $"Thank you {state.Name}, {state.Age} from {state.Country} for providing your information.";
 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
 

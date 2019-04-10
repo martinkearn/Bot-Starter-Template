@@ -10,11 +10,11 @@ namespace StarterBot.Dialogs.DialogA
 {
     public class DialogADialog : CancelAndHelpDialog
     {
-        private readonly IStatePropertyAccessor<UserProfile> _userProfileAccessor;
+        private IStatePropertyAccessor<GlobalState> _globalStateAccessor;
 
         public DialogADialog(UserState userState) : base(nameof(DialogADialog))
         {
-            _userProfileAccessor = userState.CreateProperty<UserProfile>("UserProfile");
+            _globalStateAccessor = userState.CreateProperty<GlobalState>(nameof(GlobalState));
 
             InitialDialogId = nameof(DialogADialog);
 
@@ -36,11 +36,11 @@ namespace StarterBot.Dialogs.DialogA
         {
             await stepContext.Context.SendActivityAsync($"{DialogAStrings.Welcome}", cancellationToken: cancellationToken);
 
-            // Get the current profile object from user state.
-            var userProfile = await _userProfileAccessor.GetAsync(stepContext.Context, () => new UserProfile(), cancellationToken);
+            // Get the state object from user state.
+            var state = await _globalStateAccessor.GetAsync(stepContext.Context, () => new GlobalState());
 
             //Check if user already provided country in DialogB and modify messages with provided info
-            var msg = (string.IsNullOrEmpty(userProfile.Country)) ? "What's your name?" : $"You already provided your country: {userProfile.Country}, what's your name?";
+            var msg = (string.IsNullOrEmpty(state.Country)) ? "What's your name?" : $"You already provided your country: {state.Country}, what's your name?";
 
             return await stepContext.PromptAsync("namePrompt", new PromptOptions { Prompt = MessageFactory.Text(msg) }, cancellationToken);
         }
@@ -57,13 +57,13 @@ namespace StarterBot.Dialogs.DialogA
             stepContext.Values["age"] = (int)stepContext.Result;
 
             // Get the current profile object from user state.
-            var userProfile = await _userProfileAccessor.GetAsync(stepContext.Context, () => new UserProfile(), cancellationToken);
-            userProfile.Name = (string)stepContext.Values["name"];
-            userProfile.Age = (int)stepContext.Values["age"];
+            var state = await _globalStateAccessor.GetAsync(stepContext.Context, () => new GlobalState());
+            state.Name = (string)stepContext.Values["name"];
+            state.Age = (int)stepContext.Values["age"];
 
 
             //Check if user already provided country in DialogB and modify messages with provided info
-            var msg = (string.IsNullOrEmpty(userProfile.Country)) ? $"Thank you {userProfile.Name} for providing your age {userProfile.Age}." : $"Thank you {userProfile.Name}, {userProfile.Age} from {userProfile.Country} for providing your information.";
+            var msg = (string.IsNullOrEmpty(state.Country)) ? $"Thank you {state.Name} for providing your age {state.Age}." : $"Thank you {state.Name}, {state.Age} from {state.Country} for providing your information.";
             await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
 
             return await stepContext.EndDialogAsync();

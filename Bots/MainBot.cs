@@ -7,8 +7,7 @@ using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
 using StarterBot.Bots.Resources;
 using StarterBot.Helpers;
-using StarterBot.Interfaces;
-using StarterBot.State;
+using StarterBot.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -22,7 +21,7 @@ namespace StarterBot.Bots
         private readonly BotState _userState;
         private readonly ILogger _logger;
         private readonly Dialog _dialog;
-        private IStatePropertyAccessor<WelcomeUserState> _welcomeUserStateAccessor;
+        private IStatePropertyAccessor<GlobalState> _globalStateAccessor;
 
         public MainBot(ConversationState conversationState, UserState userState, T dialog, ILogger<MainBot<T>> logger)
         {
@@ -40,7 +39,7 @@ namespace StarterBot.Bots
             _userState = userState;
             _logger = logger;
             _dialog = dialog;
-            _welcomeUserStateAccessor = _userState.CreateProperty<WelcomeUserState>(nameof(WelcomeUserState));
+            _globalStateAccessor = _userState.CreateProperty<GlobalState>(nameof(GlobalState));
 
             _logger.LogTrace("Turn start.");
         }
@@ -57,12 +56,12 @@ namespace StarterBot.Bots
         // Process incoming message
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
-            var welcomeUserState = await _welcomeUserStateAccessor.GetAsync(turnContext, () => new WelcomeUserState());
+            var state = await _globalStateAccessor.GetAsync(turnContext, () => new GlobalState());
 
             // If the user has not yet been welcomed, welcome them and save the welcome state
-            if (welcomeUserState.DidBotWelcomeUser == false)
+            if (state.DidBotWelcomeUser == false)
             {
-                welcomeUserState.DidBotWelcomeUser = true;
+                state.DidBotWelcomeUser = true;
                 var name = turnContext.Activity.From.Name ?? string.Empty;
                 await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.Welcome, name)}", cancellationToken: cancellationToken);
 
@@ -77,7 +76,7 @@ namespace StarterBot.Bots
         // Greet when users are added to the conversation.
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
-            var welcomeUserState = await _welcomeUserStateAccessor.GetAsync(turnContext, () => new WelcomeUserState());
+            var state = await _globalStateAccessor.GetAsync(turnContext, () => new GlobalState());
 
             // Welcome each member that was added
             foreach (var member in membersAdded)
@@ -88,7 +87,7 @@ namespace StarterBot.Bots
                     // Look for web chat channel because it sends this event when a user messages so we want to only do this if not webchat. Webchat welcome is handled on receipt of first message
                     if (turnContext.Activity.ChannelId.ToLower() != "webchat")
                     {
-                        welcomeUserState.DidBotWelcomeUser = true;
+                        state.DidBotWelcomeUser = true;
                         await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.WelcomeToTheConversation, member.Name)}", cancellationToken: cancellationToken);
 
                         // Save any state changes.

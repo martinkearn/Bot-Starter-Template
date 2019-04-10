@@ -6,13 +6,13 @@
             "type": "endpoint",
             "appId": "",
             "appPassword": "",
-            "endpoint": "http://localhost:53812/api/messages",
+            "endpoint": "http://localhost:3978/api/messages",
             "id": "1",
             "name": "development"
         }
     ],
     "padlock": "",
     "version": "2.0",
-    "path": "C:\\Users\\ikivanc.MIDDLEEAST\\Documents\\GitHub\\Bot-v4.3-Template\\StarterBot.bot",
-    "overrides": null
+    "overrides": null,
+    "path": "C:\\Users\\mkearn\\Documents\\GitHub\\Bot-v4.3-Template\\StarterBot.bot"
 }
