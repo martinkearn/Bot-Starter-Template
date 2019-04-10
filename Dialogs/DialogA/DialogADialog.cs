@@ -3,6 +3,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using StarterBot.Dialogs.CancelAndHelp;
 using StarterBot.Dialogs.DialogA.Resources;
 using StarterBot.Models;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -54,8 +55,8 @@ namespace StarterBot.Dialogs.DialogA
 
             //Check if user already provided country in DialogB and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Country)) ? 
-                "What's your name?" : 
-                $"You already provided your country: {state.Country}, what's your name?";
+                DialogAStrings.WhatsName :
+                String.Format(DialogAStrings.WhatsNameWithCountry, state.Country);
 
             return await stepContext.PromptAsync(NamePromptName, new PromptOptions { Prompt = MessageFactory.Text(msg) }, cancellationToken);
         }
@@ -94,7 +95,10 @@ namespace StarterBot.Dialogs.DialogA
             var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
 
             //Check if user already provided country in DialogB and modify messages with provided info
-            var msg = (string.IsNullOrEmpty(state.Country)) ? $"Thank you {state.Name} for providing your age {state.Age}." : $"Thank you {state.Name}, {state.Age} from {state.Country} for providing your information.";
+            var msg = (string.IsNullOrEmpty(state.Country)) ?
+                String.Format(DialogAStrings.ThankYouNameAge, state.Name, state.Age) :
+                String.Format(DialogAStrings.ThankYouNameAgeCountry, state.Name, state.Age, state.Country);
+
             await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);

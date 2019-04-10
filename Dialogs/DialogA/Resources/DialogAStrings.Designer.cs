@@ -19,7 +19,7 @@ namespace StarterBot.Dialogs.DialogA.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class DialogAStrings {
@@ -61,11 +61,47 @@ namespace StarterBot.Dialogs.DialogA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thank you {0} for providing your age {1}.
+        /// </summary>
+        internal static string ThankYouNameAge {
+            get {
+                return ResourceManager.GetString("ThankYouNameAge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you {0}, {1} from {2} for providing your information..
+        /// </summary>
+        internal static string ThankYouNameAgeCountry {
+            get {
+                return ResourceManager.GetString("ThankYouNameAgeCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are in Dialog A.
         /// </summary>
         internal static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What&apos;s your name?.
+        /// </summary>
+        internal static string WhatsName {
+            get {
+                return ResourceManager.GetString("WhatsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You already provided your country: {0}, what&apos;s your name?.
+        /// </summary>
+        internal static string WhatsNameWithCountry {
+            get {
+                return ResourceManager.GetString("WhatsNameWithCountry", resourceCulture);
             }
         }
     }
