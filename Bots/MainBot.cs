@@ -17,6 +17,7 @@ namespace StarterBot.Bots
 {
     public class MainBot<T> : ActivityHandler where T: Dialog
     {
+        private const string WebChatChannelId = "webchat";
         private readonly BotState _conversationState;
         private readonly BotState _userState;
         private readonly ILogger _logger;
@@ -85,7 +86,7 @@ namespace StarterBot.Bots
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
                     // Look for web chat channel because it sends this event when a user messages so we want to only do this if not webchat. Webchat welcome is handled on receipt of first message
-                    if (turnContext.Activity.ChannelId.ToLower() != "webchat")
+                    if (turnContext.Activity.ChannelId.ToLower() != WebChatChannelId)
                     {
                         state.DidBotWelcomeUser = true;
                         await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.WelcomeToTheConversation, member.Name)}", cancellationToken: cancellationToken);
