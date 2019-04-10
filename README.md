@@ -10,9 +10,10 @@ This sample is complimentary to the [Bot Framework Samples - Work In progress Br
 This sample includes the following:
 
 * Bot project with 4.3 NuGet packages
-* Up-to-date patterns around `StartUp.cs`, `Program.cs`, `BotController.cs` and the main `ActivityHandler` architecture
+* Up-to-date patterns around `StartUp.cs`, `Program.cs`, `BotController.cs`, the main `ActivityHandler` architecture and `dialog` constrctors
 * Basic dialog system with a root dialog and multiple child dialogs
-* Welcome message with state
+* Global state being updated and used accross `ActivityHandler` and `Dialog`s
+* Passing objects to dialogs on construction
 * Strings using RESX files
 * A placeholder (commented out) example of using Dispatch, Luis and QNAMaker
 
