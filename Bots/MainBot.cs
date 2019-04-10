@@ -59,12 +59,15 @@ namespace StarterBot.Bots
         {
             var state = await _globalStateAccessor.GetAsync(turnContext, () => new GlobalUserState());
 
-            // If the user has not yet been welcomed, welcome them and save the welcome state
+            // If the user has not yet been welcomed, welcome them. Make sure the welcome inlcudes a prompt to throw the message away and ask them to enter a new message
             if (state.DidBotWelcomeUser == false)
             {
                 state.DidBotWelcomeUser = true;
                 var name = turnContext.Activity.From.Name ?? string.Empty;
                 await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.Welcome, name)}", cancellationToken: cancellationToken);
+
+                // Run the initial dialog
+                await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
             }
             else
             {
@@ -89,6 +92,9 @@ namespace StarterBot.Bots
                     {
                         state.DidBotWelcomeUser = true;
                         await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.WelcomeToTheConversation, member.Name)}", cancellationToken: cancellationToken);
+
+                        // Run the initial dialog
+                        await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
                     }
                 }
             }

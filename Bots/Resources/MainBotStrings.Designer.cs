@@ -61,7 +61,7 @@ namespace StarterBot.Bots.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to the starter bot {0}. You can type anything to get started..
+        ///   Looks up a localized string similar to Welcome to the starter bot {0}..
         /// </summary>
         internal static string Welcome {
             get {
@@ -70,7 +70,7 @@ namespace StarterBot.Bots.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to the conversation {0}. You can type anything to get started..
+        ///   Looks up a localized string similar to Welcome to the conversation {0}..
         /// </summary>
         internal static string WelcomeToTheConversation {
             get {
