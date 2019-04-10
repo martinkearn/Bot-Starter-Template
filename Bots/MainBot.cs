@@ -49,7 +49,7 @@ namespace StarterBot.Bots
         {
             await base.OnTurnAsync(turnContext, cancellationToken);
 
-            // Save any state changes that might have occured during the turn.
+            // Save any state changes that might have occured during the turn. This avoids the need to explicitly save changes to state each time
             await _conversationState.SaveChangesAsync(turnContext, false, cancellationToken);
             await _userState.SaveChangesAsync(turnContext, false, cancellationToken);
         }
@@ -65,13 +65,12 @@ namespace StarterBot.Bots
                 state.DidBotWelcomeUser = true;
                 var name = turnContext.Activity.From.Name ?? string.Empty;
                 await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.Welcome, name)}", cancellationToken: cancellationToken);
-
-                // Save any state changes.
-                await _userState.SaveChangesAsync(turnContext);
             }
-
-            // Run the initial dialog
-            await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
+            else
+            {
+                // Run the initial dialog
+                await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
+            }
         }
 
         // Greet when users are added to the conversation.
@@ -90,15 +89,9 @@ namespace StarterBot.Bots
                     {
                         state.DidBotWelcomeUser = true;
                         await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.WelcomeToTheConversation, member.Name)}", cancellationToken: cancellationToken);
-
-                        // Save any state changes.
-                        await _userState.SaveChangesAsync(turnContext);
                     }
                 }
             }
-
-            // Run the initial dialog
-            await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
         }
 
 

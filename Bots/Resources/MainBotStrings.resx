@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Welcome" xml:space="preserve">
-    <value>Welcome to the starter bot {0}</value>
+    <value>Welcome to the starter bot {0}. You can type anything to get started.</value>
   </data>
   <data name="WelcomeToTheConversation" xml:space="preserve">
-    <value>Welcome to the conversation {0}</value>
+    <value>Welcome to the conversation {0}. You can type anything to get started.</value>
   </data>
 </root>

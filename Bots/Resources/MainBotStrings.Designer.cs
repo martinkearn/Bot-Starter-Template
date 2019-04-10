@@ -19,7 +19,7 @@ namespace StarterBot.Bots.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class MainBotStrings {
@@ -61,7 +61,7 @@ namespace StarterBot.Bots.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to the starter bot {0}.
+        ///   Looks up a localized string similar to Welcome to the starter bot {0}. You can type anything to get started..
         /// </summary>
         internal static string Welcome {
             get {
@@ -70,7 +70,7 @@ namespace StarterBot.Bots.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to the conversation {0}.
+        ///   Looks up a localized string similar to Welcome to the conversation {0}. You can type anything to get started..
         /// </summary>
         internal static string WelcomeToTheConversation {
             get {
