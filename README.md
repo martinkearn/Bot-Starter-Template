@@ -1,5 +1,5 @@
 # Bot v4.3 Starter Template
-This is a .net template project which can be used as a starter for a v4.3 bot with the up-to-date patterns and practices.
+This is a .net template project which can be used as a starter for a v4.3 .net bot with the up-to-date patterns and practices.
 
 At this time, there is no NodeJS equivalent (but that would make a great pull request).
 
@@ -10,9 +10,10 @@ This sample is complimentary to the [Bot Framework Samples - Work In progress Br
 This sample includes the following:
 
 * Bot project with 4.3 NuGet packages
-* Up-to-date patterns around `StartUp.cs`, `Program.cs`, `BotController.cs` and the main `ActivityHandler` architecture
+* Up-to-date patterns around `StartUp.cs`, `Program.cs`, `BotController.cs`, the main `ActivityHandler` architecture and `dialog` constrctors
 * Basic dialog system with a root dialog and multiple child dialogs
-* Welcome message with state
+* Global state being updated and used accross `ActivityHandler` and `Dialog`s
+* Passing objects to dialogs on construction
 * Strings using RESX files
 * A placeholder (commented out) example of using Dispatch, Luis and QNAMaker
 
@@ -25,3 +26,9 @@ To use this sample as a starting point for your project, follow these steps:
 3. Rename the project in Visual Studio
 4. Set your new namespace in the project settings
 5. Find and replace all instances of `namespace StarterBot` with your new name space
+
+## Credits
+This was a collaborative effort between these main contributors:
+* [Martin Kearn, Microsoft](https://github.com/martinkearn)
+* [Ibrahim Kivanc, Microsoft](https://github.com/ikivanc)
+* [Martin Simecek, Microsoft](https://github.com/msimecek)
