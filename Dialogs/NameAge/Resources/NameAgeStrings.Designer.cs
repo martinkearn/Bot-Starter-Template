@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StarterBot.Dialogs.DialogA.Resources {
+namespace StarterBot.Dialogs.NameAge.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace StarterBot.Dialogs.DialogA.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class DialogAStrings {
+    internal class NameAgeStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DialogAStrings() {
+        internal NameAgeStrings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace StarterBot.Dialogs.DialogA.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StarterBot.Dialogs.DialogA.Resources.DialogAStrings", typeof(DialogAStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StarterBot.Dialogs.NameAge.Resources.NameAgeStrings", typeof(NameAgeStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -79,7 +79,7 @@ namespace StarterBot.Dialogs.DialogA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are in Dialog A.
+        ///   Looks up a localized string similar to You are in the Name and Age dialog.
         /// </summary>
         internal static string Welcome {
             get {

@@ -25,15 +25,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>MainBotStrings.resx</DependentUpon>
     </Compile>
-    <Compile Update="Dialogs\DialogA\Resources\DialogAStrings.Designer.cs">
+    <Compile Update="Dialogs\Country\Resources\CountryStrings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>DialogAStrings.resx</DependentUpon>
+      <DependentUpon>CountryStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Dialogs\DialogA\Resources\NameAgeStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NameAgeStrings.resx</DependentUpon>
     </Compile>
     <Compile Update="Dialogs\DialogB\Resources\DialogBStrings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DialogBStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Dialogs\NameAge\Resources\NameAgeStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NameAgeStrings.resx</DependentUpon>
     </Compile>
     <Compile Update="Dialogs\Root\Resources\RootStrings.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -52,13 +62,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MainBotStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Dialogs\DialogA\Resources\DialogAStrings.resx">
+    <EmbeddedResource Update="Dialogs\Country\Resources\CountryStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DialogAStrings.Designer.cs</LastGenOutput>
+      <LastGenOutput>CountryStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dialogs\DialogA\Resources\NameAgeStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NameAgeStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Dialogs\DialogB\Resources\DialogBStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DialogBStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dialogs\NameAge\Resources\NameAgeStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NameAgeStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Dialogs\Root\Resources\RootStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StarterBot.Dialogs.DialogB.Resources {
+namespace StarterBot.Dialogs.Country.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace StarterBot.Dialogs.DialogB.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class DialogBStrings {
+    internal class CountryStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DialogBStrings() {
+        internal CountryStrings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace StarterBot.Dialogs.DialogB.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StarterBot.Dialogs.DialogB.Resources.DialogBStrings", typeof(DialogBStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StarterBot.Dialogs.Country.Resources.CountryStrings", typeof(CountryStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -79,7 +79,7 @@ namespace StarterBot.Dialogs.DialogB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are in Dialog B.
+        ///   Looks up a localized string similar to You are in the Country dialog.
         /// </summary>
         internal static string Welcome {
             get {
@@ -88,7 +88,7 @@ namespace StarterBot.Dialogs.DialogB.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are in Dialog B, {0}.
+        ///   Looks up a localized string similar to You are in the Country dialog, {0}.
         /// </summary>
         internal static string Welcome_Name {
             get {

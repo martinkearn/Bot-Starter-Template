@@ -1,8 +1,8 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
-using StarterBot.Dialogs.DialogA;
-using StarterBot.Dialogs.DialogB;
+using StarterBot.Dialogs.Country;
+using StarterBot.Dialogs.NameAge;
 using StarterBot.Dialogs.Root.Resources;
 using StarterBot.Interfaces;
 using StarterBot.Resources;
@@ -35,8 +35,8 @@ namespace StarterBot.Dialogs.Root
             // Child dialogs
             AddDialog(new WaterfallDialog(InitialDialogId, waterfallSteps));
             AddDialog(new ChoicePrompt(ChoicePromptName));
-            AddDialog(new DialogADialog(userState));
-            AddDialog(new DialogBDialog(userState));
+            AddDialog(new NameAgeDialog(userState));
+            AddDialog(new CountryDialog(userState));
         }
 
         private async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -95,7 +95,7 @@ namespace StarterBot.Dialogs.Root
             return await stepContext.PromptAsync(ChoicePromptName,
                 new PromptOptions
                 {
-                    Choices = ChoiceFactory.ToChoices(new List<string> { RootStrings.DialogAPrompt, RootStrings.DialogBPrompt }),
+                    Choices = ChoiceFactory.ToChoices(new List<string> { RootStrings.NameAgePrompt, RootStrings.CountryPrompt }),
                     Prompt = MessageFactory.Text(RootStrings.WhichFlowPrompt),
                     RetryPrompt = MessageFactory.Text(SharedStrings.InvalidResponseToChoicePrompt)
                 },
@@ -107,13 +107,13 @@ namespace StarterBot.Dialogs.Root
             var result = ((FoundChoice)stepContext.Result).Value;
 
             // A switch statement would be better but that requires a constant so not a RESX value.
-            if (result == RootStrings.DialogAPrompt)
+            if (result == RootStrings.NameAgePrompt)
             {
-                return await stepContext.BeginDialogAsync(nameof(DialogADialog));
+                return await stepContext.BeginDialogAsync(nameof(NameAgeDialog));
             }
-            else if (result == RootStrings.DialogBPrompt)
+            else if (result == RootStrings.CountryPrompt)
             {
-                return await stepContext.BeginDialogAsync(nameof(DialogBDialog));
+                return await stepContext.BeginDialogAsync(nameof(CountryDialog));
             }
             else
             {

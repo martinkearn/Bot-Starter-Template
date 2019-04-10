@@ -19,7 +19,7 @@ namespace StarterBot.Dialogs.Root.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class RootStrings {
@@ -61,20 +61,20 @@ namespace StarterBot.Dialogs.Root.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dialog A.
+        ///   Looks up a localized string similar to Country.
         /// </summary>
-        internal static string DialogAPrompt {
+        internal static string CountryPrompt {
             get {
-                return ResourceManager.GetString("DialogAPrompt", resourceCulture);
+                return ResourceManager.GetString("CountryPrompt", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dialog B.
+        ///   Looks up a localized string similar to Name and Age.
         /// </summary>
-        internal static string DialogBPrompt {
+        internal static string NameAgePrompt {
             get {
-                return ResourceManager.GetString("DialogBPrompt", resourceCulture);
+                return ResourceManager.GetString("NameAgePrompt", resourceCulture);
             }
         }
         

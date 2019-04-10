@@ -1,25 +1,25 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using StarterBot.Dialogs.CancelAndHelp;
-using StarterBot.Dialogs.DialogB.Resources;
+using StarterBot.Dialogs.Country.Resources;
 using StarterBot.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace StarterBot.Dialogs.DialogB
+namespace StarterBot.Dialogs.Country
 {
-    public class DialogBDialog : CancelAndHelpDialog
+    public class CountryDialog : CancelAndHelpDialog
     {
         private const string CountryPromptName = "countryprompt";
         private const string CountryStepKey = "country";
         private IStatePropertyAccessor<GlobalUserState> _globalUserStateAccessor;
 
-        public DialogBDialog(UserState userState) : base(nameof(DialogBDialog))
+        public CountryDialog(UserState userState) : base(nameof(CountryDialog))
         {
             _globalUserStateAccessor = userState.CreateProperty<GlobalUserState>(nameof(GlobalUserState));
 
-            InitialDialogId = nameof(DialogBDialog);
+            InitialDialogId = nameof(CountryDialog);
 
             // Add waterfall dialog steps
             var waterfallSteps = new WaterfallStep[]
@@ -43,8 +43,8 @@ namespace StarterBot.Dialogs.DialogB
 
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ? 
-                DialogBStrings.Welcome : 
-                String.Format(DialogBStrings.Welcome_Name, state.Name);
+                CountryStrings.Welcome : 
+                String.Format(CountryStrings.Welcome_Name, state.Name);
             await stepContext.Context.SendActivityAsync(msg, cancellationToken: cancellationToken);
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
@@ -54,9 +54,9 @@ namespace StarterBot.Dialogs.DialogB
         {
             var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
 
-            var promptmsg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ? 
-                DialogBStrings.WhereFrom :
-                String.Format(DialogBStrings.Welcome_Name, state.Name);
+            var promptmsg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ?
+                CountryStrings.WhereFrom :
+                String.Format(CountryStrings.Welcome_Name, state.Name);
 
             return await stepContext.PromptAsync(CountryPromptName, new PromptOptions { Prompt = MessageFactory.Text(string.Format(promptmsg))}, cancellationToken);
         }
@@ -82,8 +82,8 @@ namespace StarterBot.Dialogs.DialogB
 
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ?
-                String.Format(DialogBStrings.ThankYou_Country, state.Country) :
-                String.Format(DialogBStrings.ThankYou_Country, state.Name, state.Age, state.Country);
+                String.Format(CountryStrings.ThankYou_Country, state.Country) :
+                String.Format(CountryStrings.ThankYou_Country, state.Name, state.Age, state.Country);
 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
 

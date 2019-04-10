@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DialogAPrompt" xml:space="preserve">
-    <value>Dialog A</value>
+  <data name="CountryPrompt" xml:space="preserve">
+    <value>Country</value>
   </data>
-  <data name="DialogBPrompt" xml:space="preserve">
-    <value>Dialog B</value>
+  <data name="NameAgePrompt" xml:space="preserve">
+    <value>Name and Age</value>
   </data>
   <data name="NoIntent" xml:space="preserve">
     <value>I dont undertand the intent of your question, please re-phrase it</value>

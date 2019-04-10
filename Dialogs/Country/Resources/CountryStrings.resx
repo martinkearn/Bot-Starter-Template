@@ -117,19 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ThankYou_NameAge" xml:space="preserve">
-    <value>Thank you {0} for providing your age {1}</value>
+  <data name="ThankYou_Country" xml:space="preserve">
+    <value>Thank you for your providing your country as {0}</value>
   </data>
   <data name="ThankYou_NameAgeCountry" xml:space="preserve">
     <value>Thank you {0}, {1} from {2} for providing your information.</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>You are in Dialog A</value>
+    <value>You are in the Country dialog</value>
   </data>
-  <data name="WhatsName" xml:space="preserve">
-    <value>What's your name?</value>
+  <data name="Welcome_Name" xml:space="preserve">
+    <value>You are in the Country dialog, {0}</value>
   </data>
-  <data name="WhatsName_Country" xml:space="preserve">
-    <value>You already provided your country: {0}, what's your name?</value>
+  <data name="WhereFrom" xml:space="preserve">
+    <value>Where are you from?</value>
+  </data>
+  <data name="WhereFrom_Name" xml:space="preserve">
+    <value>Where are you from {0}?</value>
   </data>
 </root>
