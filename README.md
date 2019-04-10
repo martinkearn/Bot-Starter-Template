@@ -19,13 +19,31 @@ This sample includes the following:
 
 ## To use
 
-To use this sample as a starting point for your project, follow these steps:
+There are multiple ways you can use this project.
 
-1. Clone the repository
-2. Rename the solution in Visual Studio
-3. Rename the project in Visual Studio
+### Install the Visual Studio template
+
+There is a Visual Studio template based on the contents of the `src` folder in this repository.
+
+You can install this from [/vsix](https://github.com/martinkearn/Bot-v4.3-Template/raw/master/vsix/StarterBot.vsix). After installation, search for "Starter Bot" in the new project dialog in Visual Studio.
+
+This is probably the simplest way to use this template, but may not always be up-to-date with the very latest commits on the master branch.
+
+You can see the VSIX project itself at [/vsix/src/Templates](https://github.com/martinkearn/Bot-v4.3-Template/tree/master/vsix/src/Templates)
+
+### Clone and rename
+
+You can clone this repository and adapt to suit your needs.
+
+This approach is good if you want to make sure you have the very latest version of the template.
+
+Follow these steps:
+
+1. Clone this repository
+2. Rename the [/src/StarterBot.sln](https://github.com/martinkearn/Bot-v4.3-Template/blob/master/src/StarterBot.sln) solution in Visual Studio
+3. Rename the [/src/StarterBot.csproj](https://github.com/martinkearn/Bot-v4.3-Template/blob/master/src/StarterBot.csproj) project in Visual Studio
 4. Set your new namespace in the project settings
-5. Find and replace all instances of `namespace StarterBot` with your new name space
+5. Find and replace all instances of `namespace StarterBot` with your new namespace
 
 ## Credits
 This was a collaborative effort between these main contributors:
