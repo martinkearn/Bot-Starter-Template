@@ -26,3 +26,9 @@ To use this sample as a starting point for your project, follow these steps:
 3. Rename the project in Visual Studio
 4. Set your new namespace in the project settings
 5. Find and replace all instances of `namespace StarterBot` with your new name space
+
+## Credits
+This was a collaborative effort between these main contributors:
+* [Martin Kearn, Microsoft](https://github.com/martinkearn)
+* [Ibrahim Kivanc, Microsoft](https://github.com/ikivanc)
+* [Martin Simecek, Microsoft](https://github.com/msimecek)
