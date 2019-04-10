@@ -10,6 +10,8 @@ namespace StarterBot.Dialogs.DialogB
 {
     public class DialogBDialog : CancelAndHelpDialog
     {
+        private const string CountryPromptName = "countryprompt";
+        private const string CountryStepKey = "country";
         private IStatePropertyAccessor<GlobalUserState> _globalUserStateAccessor;
 
         public DialogBDialog(UserState userState) : base(nameof(DialogBDialog))
@@ -31,7 +33,7 @@ namespace StarterBot.Dialogs.DialogB
             AddDialog(new WaterfallDialog(InitialDialogId, waterfallSteps));
 
             // Add Prompts
-            AddDialog(new TextPrompt("countryPrompt"));
+            AddDialog(new TextPrompt(CountryPromptName));
         }
 
         private async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -55,12 +57,12 @@ namespace StarterBot.Dialogs.DialogB
                 $"Where are you from?" : 
                 $"Where are you from {state.Name}?";
 
-            return await stepContext.PromptAsync("countryPrompt", new PromptOptions { Prompt = MessageFactory.Text(string.Format(promptmsg))}, cancellationToken);
+            return await stepContext.PromptAsync(CountryPromptName, new PromptOptions { Prompt = MessageFactory.Text(string.Format(promptmsg))}, cancellationToken);
         }
 
         private async Task<DialogTurnResult> HandleCountryAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            stepContext.Values["country"] = (string)stepContext.Result;
+            stepContext.Values[CountryStepKey] = (string)stepContext.Result;
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
@@ -68,7 +70,7 @@ namespace StarterBot.Dialogs.DialogB
         private async Task<DialogTurnResult> SaveStateAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
-            state.Country = (string)stepContext.Values["country"];
+            state.Country = (string)stepContext.Values[CountryStepKey];
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }

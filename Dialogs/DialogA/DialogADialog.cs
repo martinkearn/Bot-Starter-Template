@@ -10,6 +10,10 @@ namespace StarterBot.Dialogs.DialogA
 {
     public class DialogADialog : CancelAndHelpDialog
     {
+        private const string NamePromptName = "nameprompt";
+        private const string AgePromptName = "ageprompt";
+        private const string NameStepKey = "name";
+        private const string AgeStepKey = "age";
         private IStatePropertyAccessor<GlobalUserState> _globalUserStateAccessor;
 
         public DialogADialog(UserState userState) : base(nameof(DialogADialog))
@@ -33,8 +37,8 @@ namespace StarterBot.Dialogs.DialogA
             AddDialog(new WaterfallDialog(InitialDialogId, waterfallSteps));
             
             // Add Prompts
-            AddDialog(new TextPrompt("namePrompt"));
-            AddDialog(new NumberPrompt<int>("agePrompt"));
+            AddDialog(new TextPrompt(NamePromptName));
+            AddDialog(new NumberPrompt<int>(AgePromptName));
         }
 
         private async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -53,24 +57,24 @@ namespace StarterBot.Dialogs.DialogA
                 "What's your name?" : 
                 $"You already provided your country: {state.Country}, what's your name?";
 
-            return await stepContext.PromptAsync("namePrompt", new PromptOptions { Prompt = MessageFactory.Text(msg) }, cancellationToken);
+            return await stepContext.PromptAsync(NamePromptName, new PromptOptions { Prompt = MessageFactory.Text(msg) }, cancellationToken);
         }
 
         private async Task<DialogTurnResult> HandleNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            stepContext.Values["name"] = (string)stepContext.Result;
+            stepContext.Values[NameStepKey] = (string)stepContext.Result;
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
 
         private async Task<DialogTurnResult> AskAgeAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            return await stepContext.PromptAsync("agePrompt", new PromptOptions { Prompt = MessageFactory.Text(string.Format($"What's your age {stepContext.Values["name"]}?")) }, cancellationToken);
+            return await stepContext.PromptAsync(AgePromptName, new PromptOptions { Prompt = MessageFactory.Text(string.Format($"What's your age {stepContext.Values["name"]}?")) }, cancellationToken);
         }
 
         private async Task<DialogTurnResult> HandleAgeAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            stepContext.Values["age"] = (int)stepContext.Result;
+            stepContext.Values[AgeStepKey] = (int)stepContext.Result;
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
@@ -79,8 +83,8 @@ namespace StarterBot.Dialogs.DialogA
         {
             // Update state from stepContent
             var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
-            state.Name = (string)stepContext.Values["name"];
-            state.Age = (int)stepContext.Values["age"];
+            state.Name = (string)stepContext.Values[NameStepKey];
+            state.Age = (int)stepContext.Values[AgeStepKey];
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
