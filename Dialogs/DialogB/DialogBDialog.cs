@@ -1,5 +1,6 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
+using StarterBot.Dialogs.CancelAndHelp;
 using StarterBot.Dialogs.DialogB.Resources;
 using StarterBot.Models;
 using System.Threading;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StarterBot.Dialogs.DialogB
 {
-    public class DialogBDialog : ComponentDialog
+    public class DialogBDialog : CancelAndHelpDialog
     {
         private readonly IStatePropertyAccessor<UserProfile> _userProfileAccessor;
 
