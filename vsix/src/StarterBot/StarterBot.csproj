@@ -49,14 +49,14 @@
     <Compile Include="StarterBotPackage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ProjectTemplates\StarterBot v4.3.zip">
+    <Content Include="ProjectTemplates\StarterBot.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
-    <None Include="StarterBot v4.3.zip">
+    <None Include="StarterBot.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
