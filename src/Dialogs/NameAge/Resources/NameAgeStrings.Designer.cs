@@ -88,6 +88,15 @@ namespace StarterBot.Dialogs.NameAge.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to What&apos;s your age {0}?.
+        /// </summary>
+        internal static string WhatsAge_Name {
+            get {
+                return ResourceManager.GetString("WhatsAge_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to What&apos;s your name?.
         /// </summary>
         internal static string WhatsName {

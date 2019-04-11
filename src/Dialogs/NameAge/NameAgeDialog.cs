@@ -57,16 +57,18 @@ namespace StarterBot.Dialogs.NameAge
         {
             var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
 
-            //Check if user already provided country in DialogB and modify messages with provided info
+            // Construct prompt
             var msg = (string.IsNullOrEmpty(state.Country)) ?
                 NameAgeStrings.WhatsName :
                 String.Format(NameAgeStrings.WhatsName_Country, state.Country);
+            var promptOptions = new PromptOptions { Prompt = MessageFactory.Text(msg) };
 
-            return await stepContext.PromptAsync(NamePromptName, new PromptOptions { Prompt = MessageFactory.Text(msg) }, cancellationToken);
+            return await stepContext.PromptAsync(NamePromptName, promptOptions, cancellationToken);
         }
 
         private async Task<DialogTurnResult> HandleNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
+            // Store the result in stepcontext
             stepContext.Values[NameStepKey] = (string)stepContext.Result;
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
@@ -74,11 +76,16 @@ namespace StarterBot.Dialogs.NameAge
 
         private async Task<DialogTurnResult> AskAgeAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            return await stepContext.PromptAsync(AgePromptName, new PromptOptions { Prompt = MessageFactory.Text(string.Format($"What's your age {stepContext.Values["name"]}?")) }, cancellationToken);
+            // Construct prompt
+            var msg = String.Format(NameAgeStrings.WhatsAge_Name, stepContext.Values[NameStepKey]);
+            var promptOptions = new PromptOptions { Prompt = MessageFactory.Text(msg) };
+
+            return await stepContext.PromptAsync(AgePromptName, promptOptions, cancellationToken);
         }
 
         private async Task<DialogTurnResult> HandleAgeAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
+            // Store the result in stepcontext
             stepContext.Values[AgeStepKey] = (int)stepContext.Result;
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);

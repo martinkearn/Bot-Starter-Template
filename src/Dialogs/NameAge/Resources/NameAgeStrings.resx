@@ -126,6 +126,9 @@
   <data name="Welcome" xml:space="preserve">
     <value>You are in the Name and Age dialog</value>
   </data>
+  <data name="WhatsAge_Name" xml:space="preserve">
+    <value>What's your age {0}?</value>
+  </data>
   <data name="WhatsName" xml:space="preserve">
     <value>What's your name?</value>
   </data>

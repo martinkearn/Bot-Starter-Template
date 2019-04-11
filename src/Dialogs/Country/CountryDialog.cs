@@ -46,8 +46,8 @@ namespace StarterBot.Dialogs.Country
             var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
 
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
-            var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ? 
-                CountryStrings.Welcome : 
+            var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ?
+                CountryStrings.Welcome :
                 String.Format(CountryStrings.Welcome_Name, state.Name);
             await stepContext.Context.SendActivityAsync(msg, cancellationToken: cancellationToken);
 
@@ -58,15 +58,18 @@ namespace StarterBot.Dialogs.Country
         {
             var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
 
-            var promptmsg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ?
+            // Construct prompt
+            var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ?
                 CountryStrings.WhereFrom :
                 String.Format(CountryStrings.WhereFrom_Name, state.Name);
+            var promptOptions = new PromptOptions { Prompt = MessageFactory.Text(string.Format(msg)) };
 
-            return await stepContext.PromptAsync(CountryPromptName, new PromptOptions { Prompt = MessageFactory.Text(string.Format(promptmsg))}, cancellationToken);
+            return await stepContext.PromptAsync(CountryPromptName, promptOptions, cancellationToken);
         }
 
         private async Task<DialogTurnResult> HandleCountryAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
+            // Store the result in stepcontext
             stepContext.Values[CountryStepKey] = (string)stepContext.Result;
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
@@ -87,7 +90,7 @@ namespace StarterBot.Dialogs.Country
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ?
                 String.Format(CountryStrings.ThankYou_Country, state.Country) :
-                String.Format(CountryStrings.ThankYou_Country, state.Name, state.Age, state.Country);
+                String.Format(CountryStrings.ThankYou_NameAgeCountry, state.Name, state.Age, state.Country);
 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
 

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace StarterBot.Bots
 {
-    public class MainBot<T> : ActivityHandler where T: Dialog
+    public class MainBot<T> : ActivityHandler where T : Dialog
     {
         private const string WebChatChannelId = "webchat";
         private readonly BotState _conversationState;
@@ -62,7 +62,10 @@ namespace StarterBot.Bots
             // If the user has not yet been welcomed, welcome them. Make sure the welcome inlcudes a prompt to throw the message away and ask them to enter a new message
             if (state.DidBotWelcomeUser == false)
             {
+                // Set state
                 state.DidBotWelcomeUser = true;
+
+                // Send welcome message
                 var name = turnContext.Activity.From.Name ?? string.Empty;
                 await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.Welcome_name, name)}", cancellationToken: cancellationToken);
 
@@ -79,8 +82,6 @@ namespace StarterBot.Bots
         // Greet when users are added to the conversation.
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
-            var state = await _globalStateAccessor.GetAsync(turnContext, () => new GlobalUserState());
-
             // Welcome each member that was added
             foreach (var member in membersAdded)
             {
@@ -90,8 +91,13 @@ namespace StarterBot.Bots
                     // Look for web chat channel because it sends this event when a user messages so we want to only do this if not webchat. Webchat welcome is handled on receipt of first message
                     if (turnContext.Activity.ChannelId.ToLower() != WebChatChannelId)
                     {
+                        // Set state
+                        var state = await _globalStateAccessor.GetAsync(turnContext, () => new GlobalUserState());
                         state.DidBotWelcomeUser = true;
-                        await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.WelcomeToTheConversation_name, member.Name)}", cancellationToken: cancellationToken);
+
+                        // Send welcome message
+                        var name = member.Name ?? string.Empty;
+                        await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.WelcomeToTheConversation_name, name)}", cancellationToken: cancellationToken);
 
                         // Run the initial dialog
                         await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);

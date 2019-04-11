@@ -111,7 +111,7 @@ namespace StarterBot.Dialogs.Root
         {
             var result = ((FoundChoice)stepContext.Result).Value;
 
-            // A switch statement would be better but that requires a constant so not a RESX value.
+            // A switch statement would be better but that requires a constant and we want all strings to be in RESX files
             if (result == RootStrings.NameAgePrompt)
             {
                 return await stepContext.BeginDialogAsync(nameof(NameAgeDialog));
