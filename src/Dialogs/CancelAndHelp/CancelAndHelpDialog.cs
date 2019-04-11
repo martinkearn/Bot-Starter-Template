@@ -15,7 +15,7 @@ namespace StarterBot.Dialogs.CancelAndHelp
         {
         }
 
-        protected override async Task<DialogTurnResult> OnBeginDialogAsync(DialogContext innerDc, object options, CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<DialogTurnResult> OnBeginDialogAsync(DialogContext innerDc, object options, CancellationToken cancellationToken)
         {
             var result = await InterruptAsync(innerDc, cancellationToken);
             if (result != null)
@@ -49,11 +49,11 @@ namespace StarterBot.Dialogs.CancelAndHelp
                     case "?":
                         await innerDc.Context.SendActivityAsync($"Show Help...", cancellationToken: cancellationToken);
                         // When you have Q&A Dialog, you can redirect conversation to that Dialog
-                        return await innerDc.ReplaceDialogAsync(nameof(RootDialog));
+                        return await innerDc.ReplaceDialogAsync(nameof(RootDialog), cancellationToken: cancellationToken);
                     case "cancel":
                     case "quit":
                         await innerDc.Context.SendActivityAsync($"Cancelling", cancellationToken: cancellationToken);
-                        return await innerDc.CancelAllDialogsAsync();
+                        return await innerDc.CancelAllDialogsAsync(cancellationToken: cancellationToken);
                 }
             }
 

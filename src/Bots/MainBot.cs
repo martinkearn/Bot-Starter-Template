@@ -70,12 +70,12 @@ namespace StarterBot.Bots
                 await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.Welcome_name, name)}", cancellationToken: cancellationToken);
 
                 // Run the initial dialog
-                await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
+                await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken : cancellationToken);
             }
             else
             {
                 // Run the initial dialog
-                await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
+                await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken : cancellationToken);
             }
         }
 
@@ -100,7 +100,7 @@ namespace StarterBot.Bots
                         await turnContext.SendActivityAsync($"{String.Format(MainBotStrings.WelcomeToTheConversation_name, name)}", cancellationToken: cancellationToken);
 
                         // Run the initial dialog
-                        await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken, null);
+                        await _dialog.Run(turnContext, _conversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken : cancellationToken);
                     }
                 }
             }

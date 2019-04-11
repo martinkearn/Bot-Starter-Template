@@ -49,7 +49,7 @@ namespace StarterBot.Dialogs.Root
             // If required, get the utterance like this: 
             var utterance = (string)stepContext.Options;
 
-            await stepContext.Context.SendActivityAsync($"{RootStrings.Welcome}", cancellationToken: cancellationToken);
+            await stepContext.Context.SendActivityAsync($"{RootStrings.Welcome}", cancellationToken : cancellationToken);
 
             return await stepContext.NextAsync(cancellationToken: cancellationToken);
         }
@@ -114,11 +114,11 @@ namespace StarterBot.Dialogs.Root
             // A switch statement would be better but that requires a constant and we want all strings to be in RESX files
             if (result == RootStrings.NameAgePrompt)
             {
-                return await stepContext.BeginDialogAsync(nameof(NameAgeDialog));
+                return await stepContext.BeginDialogAsync(nameof(NameAgeDialog), cancellationToken);
             }
             else if (result == RootStrings.CountryPrompt)
             {
-                return await stepContext.BeginDialogAsync(nameof(CountryDialog));
+                return await stepContext.BeginDialogAsync(nameof(CountryDialog), cancellationToken);
             }
             else
             {
@@ -129,7 +129,7 @@ namespace StarterBot.Dialogs.Root
         private async Task<DialogTurnResult> EndAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             // Restart the root dialog
-            return await stepContext.ReplaceDialogAsync(InitialDialogId).ConfigureAwait(false);
+            return await stepContext.ReplaceDialogAsync(InitialDialogId, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

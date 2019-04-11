@@ -39,7 +39,7 @@ namespace StarterBot.Dialogs.Luis
 
         private async Task<DialogTurnResult> EndAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            return await stepContext.EndDialogAsync();
+            return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);
         }
     }
 }
