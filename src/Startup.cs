@@ -7,10 +7,12 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.DependencyInjection;
+using StarterBot.Adapters;
 using StarterBot.Bots;
 using StarterBot.Dialogs.Root;
 using StarterBot.Helpers;
 using StarterBot.Interfaces;
+using StarterBot.Middleware;
 using StarterBot.Services;
 
 namespace StarterBot
@@ -23,7 +25,7 @@ namespace StarterBot
 
             services.AddSingleton<IBotServices, BotServices>();
 
-            services.AddSingleton<IBotFrameworkHttpAdapter, BotFrameworkHttpAdapter>();
+            services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 
             services.AddSingleton<ICredentialProvider, ConfigurationCredentialProvider>();
 
@@ -32,6 +34,10 @@ namespace StarterBot
             services.AddSingleton<UserState>();
 
             services.AddSingleton<ConversationState>();
+
+            services.AddSingleton<ShowTypingMiddleware>();
+
+            services.AddSingleton<ResetStateMiddleware>();
 
             services.AddSingleton<RootDialog>();
 
