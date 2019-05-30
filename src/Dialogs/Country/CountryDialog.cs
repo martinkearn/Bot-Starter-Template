@@ -87,6 +87,9 @@ namespace StarterBot.Dialogs.Country
         {
             var state = await _globalUserStateAccessor.GetAsync(stepContext.Context, () => new GlobalUserState());
 
+            // Simulate long running task (which will display the progress indicator through middleware)
+            await Task.Delay(3000);
+
             //Check if user already provided Name and Age in DialogA and modify messages with provided info
             var msg = (string.IsNullOrEmpty(state.Name) && state.Age == 0) ?
                 String.Format(CountryStrings.ThankYou_Country, state.Country) :
