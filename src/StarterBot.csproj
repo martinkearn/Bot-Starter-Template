@@ -50,6 +50,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>RootStrings.resx</DependentUpon>
     </Compile>
+    <Compile Update="Middleware\Resources\MiddlewareStrings.Designer.cs">
+      <DependentUpon>MiddlewareStrings.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Resources\SharedStrings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -81,6 +86,10 @@
     <EmbeddedResource Update="Dialogs\Root\Resources\RootStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RootStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Middleware\Resources\MiddlewareStrings.resx">
+      <LastGenOutput>MiddlewareStrings.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\SharedStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>

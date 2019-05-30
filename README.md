@@ -54,6 +54,7 @@ Follow these steps:
 3. Rename the [/src/StarterBot.csproj](https://github.com/martinkearn/Bot-v4.3-Template/blob/master/src/StarterBot.csproj) project in Visual Studio
 4. Set your new namespace in the project settings
 5. Find and replace all instances of `namespace StarterBot` with your new namespace
+6. Replace all instances of `StarterBot` in the resource files (`SharedStrings.resx`, `CountryStrings.resx`, `NameAgeStrings.resx` and `RootStrings.resx` ) with your new namespace by simple re-saving the resource files
 
 ## Credits
 This was a collaborative effort between these main contributors:
