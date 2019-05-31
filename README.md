@@ -3,9 +3,11 @@ This can be used as a starter template for a .net bot with the latest patterns a
 
 At this time, there is no NodeJS equivalent (but that would make a great pull request).
 
-The latest Bot Framework version is v4.4 but there is no official template. The life of this project may be limited until such a time that there is an official project template which adopts these patterns. Until such a template exists, you can use this project as a great starting point for a v4.4 .net Bot Framework project.
+There is an official template for Bot Framework v4.4.4 which you can see here: https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4
 
-This sample is complimentary to the [Bot Framework Samples - Work In progress Branch](https://github.com/Microsoft/BotBuilder-Samples/tree/samples-work-in-progress/samples/csharp_dotnetcore). Many of the patterns used in this sample are taken from common patterns seen in these official samples.
+The official template provides three starter options which may or may not be useful. The `Core bot` is the most comprehensive and complete.
+
+This sample is complimentary to the [official template](https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4) and [Bot Framework Samples](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore). Many of the patterns used in this sample are taken from common patterns seen in these official samples.
 
 This sample includes the following:
 
