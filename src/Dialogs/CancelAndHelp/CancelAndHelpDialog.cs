@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
+using StarterBot.Dialogs.CancelAndHelp.Resources;
 using StarterBot.Dialogs.Root;
 
 namespace StarterBot.Dialogs.CancelAndHelp
@@ -47,12 +48,12 @@ namespace StarterBot.Dialogs.CancelAndHelp
                 {
                     case "help":
                     case "?":
-                        await innerDc.Context.SendActivityAsync($"Show Help...", cancellationToken: cancellationToken);
+                        await innerDc.Context.SendActivityAsync(CancelAndHelpStrings.Help, cancellationToken: cancellationToken);
                         // When you have Q&A Dialog, you can redirect conversation to that Dialog
                         return await innerDc.ReplaceDialogAsync(nameof(RootDialog), cancellationToken: cancellationToken);
                     case "cancel":
                     case "quit":
-                        await innerDc.Context.SendActivityAsync($"Cancelling", cancellationToken: cancellationToken);
+                        await innerDc.Context.SendActivityAsync(CancelAndHelpStrings.Cancel, cancellationToken: cancellationToken);
                         return await innerDc.CancelAllDialogsAsync(cancellationToken: cancellationToken);
                 }
             }

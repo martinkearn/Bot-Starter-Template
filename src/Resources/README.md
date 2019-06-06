@@ -61,4 +61,3 @@ This was a collaborative effort between these main contributors:
 * [Martin Kearn, Microsoft](https://github.com/martinkearn)
 * [Ibrahim Kivanc, Microsoft](https://github.com/ikivanc)
 * [Martin Simecek, Microsoft](https://github.com/msimecek)
-* [Jamie Dalton, Microsoft](https://github.com/daltskin)
