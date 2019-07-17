@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="StarterBot.7c6c72f4-10b1-4961-a62d-a0c453c794c0" Version="1.0" Language="en-US" Publisher="Martin Kearn" />
         <DisplayName>StarterBot</DisplayName>
-        <Description xml:space="preserve">A starter template for a Bot Framework v4.3 .net bot with the up-to-date patterns and practices </Description>
+        <Description xml:space="preserve">A starter template for a Bot Framework v4.4.4 .net bot with the up-to-date patterns and practices </Description>
         <MoreInfo>https://github.com/martinkearn/Bot-Starter-Template</MoreInfo>
     </Metadata>
     <Installation>
