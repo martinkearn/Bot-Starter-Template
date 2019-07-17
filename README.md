@@ -1,9 +1,9 @@
-# Bot Starter Template for v4.4.4
+# Bot Starter Template for v4.5.0
 This can be used as a starter template for a .net bot with the latest patterns and practices. 
 
 At this time, there is no NodeJS equivalent (but that would make a great pull request).
 
-There is an official template for Bot Framework v4.4.4 which you can see here: https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4
+There is an official template for Bot Framework v4.5.0 which you can see here: https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4
 
 The official template provides three starter options which may or may not be useful. The `Core bot` is the most comprehensive and complete.
 
@@ -11,7 +11,7 @@ This sample is complimentary to the [official template](https://marketplace.visu
 
 This sample includes the following:
 
-* Bot project with v4.4.4 `Microsoft.Bot.Builder.*` NuGet packages
+* Bot project with v4.5.0 `Microsoft.Bot.Builder.*` NuGet packages
 * Up-to-date patterns around `StartUp.cs`, `Program.cs`, `BotController.cs`, the main `ActivityHandler` architecture and `dialog` constrctors
 * Basic dialog system with a root dialog and multiple child dialogs
 * Global state being updated and used accross `ActivityHandler` and `Dialog`s
