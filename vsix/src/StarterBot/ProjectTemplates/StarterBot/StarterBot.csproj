@@ -1,0 +1,99 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <UserSecretsId>54fa3686-0b6c-4174-a77d-acf44755d2dc</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" />
+    <PackageReference Include="Microsoft.Bot.Builder" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.AI.Luis" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.AI.QnA" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Bot.Configuration" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Bot.Connector" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Bot.Schema" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="3.0.0-preview6.19304.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Bots\Resources\MainBotStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MainBotStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Dialogs\Country\Resources\CountryStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CountryStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Dialogs\DialogA\Resources\NameAgeStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NameAgeStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Dialogs\DialogB\Resources\DialogBStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DialogBStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Dialogs\NameAge\Resources\NameAgeStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NameAgeStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Dialogs\Root\Resources\RootStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RootStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Middleware\Resources\MiddlewareStrings.Designer.cs">
+      <DependentUpon>MiddlewareStrings.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\SharedStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SharedStrings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Bots\Resources\MainBotStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainBotStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dialogs\Country\Resources\CountryStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CountryStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dialogs\DialogA\Resources\NameAgeStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NameAgeStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dialogs\DialogB\Resources\DialogBStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DialogBStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dialogs\NameAge\Resources\NameAgeStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NameAgeStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dialogs\Root\Resources\RootStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RootStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Middleware\Resources\MiddlewareStrings.resx">
+      <LastGenOutput>MiddlewareStrings.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SharedStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
