@@ -1,17 +1,15 @@
-# Bot Starter Template for v4.5.0
+# Bot Starter Template for v4.3
 This can be used as a starter template for a .net bot with the latest patterns and practices. 
 
 At this time, there is no NodeJS equivalent (but that would make a great pull request).
 
-There is an official template for Bot Framework v4.5.0 which you can see here: https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4
+The latest Bot Framework version is v4.3 but there is no official v4.3 template. The life of this project may be limited until such a time that there is an official v4.3 project template which adopts these patterns. Until such a template exists, you can use this project as a great starting point for a v4.3 .net Bot Framework project.
 
-The official template provides three starter options which may or may not be useful. The `Core bot` is the most comprehensive and complete.
-
-This sample is complimentary to the [official template](https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4) and [Bot Framework Samples](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore). Many of the patterns used in this sample are taken from common patterns seen in these official samples.
+This sample is complimentary to the [Bot Framework Samples - Work In progress Branch](https://github.com/Microsoft/BotBuilder-Samples/tree/samples-work-in-progress/samples/csharp_dotnetcore). Many of the patterns used in this sample are taken from common patterns seen in these official samples.
 
 This sample includes the following:
 
-* Bot project with v4.5.0 `Microsoft.Bot.Builder.*` NuGet packages
+* Bot project with v4.3.2 `Microsoft.Bot.Builder.*` NuGet packages
 * Up-to-date patterns around `StartUp.cs`, `Program.cs`, `BotController.cs`, the main `ActivityHandler` architecture and `dialog` constrctors
 * Basic dialog system with a root dialog and multiple child dialogs
 * Global state being updated and used accross `ActivityHandler` and `Dialog`s
@@ -63,4 +61,3 @@ This was a collaborative effort between these main contributors:
 * [Martin Kearn, Microsoft](https://github.com/martinkearn)
 * [Ibrahim Kivanc, Microsoft](https://github.com/ikivanc)
 * [Martin Simecek, Microsoft](https://github.com/msimecek)
-* [Jamie Dalton, Microsoft](https://github.com/daltskin)

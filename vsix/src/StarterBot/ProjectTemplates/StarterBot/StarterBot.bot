@@ -1,0 +1,18 @@
+{
+    "name": "StarterBot",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:3978/api/messages",
+            "id": "1",
+            "name": "development"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "overrides": null,
+    "path": "C:\\Users\\mkearn\\Documents\\GitHub\\Bot-v4.3-Template\\StarterBot.bot"
+}

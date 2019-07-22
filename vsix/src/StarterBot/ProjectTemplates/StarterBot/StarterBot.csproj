@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <RootNamespace>StarterBot</RootNamespace>
+    <RootNamespace>$safeprojectname$</RootNamespace>
     <UserSecretsId>54fa3686-0b6c-4174-a77d-acf44755d2dc</UserSecretsId>
   </PropertyGroup>
 
@@ -24,11 +24,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>MainBotStrings.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Dialogs\CancelAndHelp\Resources\CancelAndHelpStrings.Designer.cs">
-      <DependentUpon>CancelAndHelpStrings.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Update="Dialogs\Country\Resources\CountryStrings.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -71,10 +66,6 @@
     <EmbeddedResource Update="Bots\Resources\MainBotStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MainBotStrings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Dialogs\CancelAndHelp\Resources\CancelAndHelpStrings.resx">
-      <LastGenOutput>CancelAndHelpStrings.Designer.cs</LastGenOutput>
-      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Dialogs\Country\Resources\CountryStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
